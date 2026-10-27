@@ -1,102 +1,231 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Bas</title>
+    <title>Bastian Yudistira Movic | Junior Web Developer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="dist/img/portfolio-website.png">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
-    container: {
-      center: true,
-      padding: '16px',
-    },
-            extend: {
-                 colors: {
-                   primary: '#14b8a6',
-                   dark: '#0f172a',
-                   putih: '#ffffff',
-                   secondary: '#64748b',
-                    screens : {
+                container: {
+                    center: true,
+                    padding: '16px',
+                },
+                extend: {
+                    colors: {
+                        primary: '#14b8a6',
+                        'primary-dark': '#0d9488',
+                        'primary-light': '#ccfbf1',
+                        dark: '#0f172a',
+                        secondary: '#64748b',
+                        putih: '#ffffff',
+                    },
+                    screens: {
                         '2xl': '1320px',
                     }
                 },
-              },
             },
         }
     </script>
 
-    <link rel="icon" type="image/png" href="dist/img/portfolio-website.png">
-    <link rel="stylesheet" href="src/input.css">
+    <!-- Precompiled Tailwind CSS -->
+    <link rel="stylesheet" href="dist/output.css">
 
-    <style type="text/tailwindcss">
+    <style>
         body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .navbar-fixed {
-            @apply fixed z-[9999];
-            backdrop-filter: blur(5px);
-            box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
         }
 
+        /* Frosted Glass Navbar */
+        .navbar-fixed {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger Animation */
         .hamburger {
-            width: 30px;
+            width: 24px;
             height: 2px;
         }
 
         .hamburger-active > span:nth-child(1) {
-            @apply rotate-45;
+            transform: translateY(8px) rotate(45deg);
         }
 
         .hamburger-active > span:nth-child(2) {
-            @apply scale-0;
+            opacity: 0;
+            transform: scale(0);
         }
 
         .hamburger-active > span:nth-child(3) {
-            @apply -rotate-45;
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Mobile Nav Active Link Pill */
+        @media (max-width: 1023px) {
+            .nav-link.active {
+                background-color: rgba(20, 184, 166, 0.12) !important;
+                color: #0d9488 !important;
+                font-weight: 700 !important;
+            }
+        }
+
+        /* Floating Tech Badges Animation */
+        @keyframes float-slow {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(1deg);
+            }
+        }
+
+        @keyframes float-delayed {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(8px) rotate(-1deg);
+            }
+        }
+
+        .animate-float-slow {
+            animation: float-slow 4s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float-delayed 5s ease-in-out infinite 1s;
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal-init {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #14b8a6;
         }
     </style>
-    
-    
 </head>
-<body class="bg-white">
+<body class="bg-white text-dark antialiased relative">
 
-    <!-- Header Start -->
-    <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 opacity-90 ">
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-primary via-teal-400 to-emerald-400 z-[10000] w-0 transition-all duration-75"></div>
+
+    <!-- Header / Navbar Start -->
+    <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-40 transition-all duration-300">
         <div class="container mx-auto px-4 max-w-6xl">
-            <div class="flex items-center justify-between relative">
-                <div class="px-4 ">
-                    <a href="#home" class="font-bold text-lg text-primary block py-6">Bastian</a>
+            <div class="flex items-center justify-between relative py-4 lg:py-5">
+                <!-- Brand Logo -->
+                <div class="px-4">
+                    <a href="#home" class="font-bold text-xl lg:text-2xl text-primary tracking-tight flex items-center gap-1 group">
+                        Bastian<span class="text-dark group-hover:text-primary transition-colors">Yudistira</span>
+                        </span>
+                    </a>
                 </div>
-                <div class="flex items-center px-4 ">
-                    <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
-                        <span class="hamburger my-2 block bg-dark transition duration-300 ease-in-out origin-top-left"></span>
-                        <span class="hamburger my-2 block bg-dark transition duration-300 ease-in-out"></span>
-                        <span class="hamburger my-2 block bg-dark transition duration-300 ease-in-out origin-bottom-left"></span>
+
+                <!-- Navigation & Hamburger -->
+                <div class="flex items-center px-4">
+                    <!-- Hamburger Button (Mobile) -->
+                    <button id="hamburger" onclick="toggleMobileNav()" name="hamburger" type="button" aria-label="Toggle Navigation Menu" class="block lg:hidden p-2 rounded-xl hover:bg-slate-100 transition focus:outline-none">
+                        <span class="hamburger my-1.5 block bg-dark transition duration-300 ease-in-out origin-center"></span>
+                        <span class="hamburger my-1.5 block bg-dark transition duration-300 ease-in-out origin-center"></span>
+                        <span class="hamburger my-1.5 block bg-dark transition duration-300 ease-in-out origin-center"></span>
                     </button>
 
-                    <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
-                    <ul class="block lg:flex">
-                        <li class="group">
-                            <a href="#home" class="flex text-base text-dark py-2 mx-8 group-hover:text-primary">Beranda</a>
-                        </li>
-                        <li class="group">
-                            <a href="#about" class="flex text-base text-dark py-2 mx-8 group-hover:text-primary">Tentang</a>
-                        </li>
-                        <li class="group">
-                            <a href="#skills" class="flex text-base text-dark py-2 mx-8 group-hover:text-primary">Keahlian</a>
-                        </li>
-                        <li class="group">
-                            <a href="#portfolio" class="flex text-base text-dark py-2 mx-8 group-hover:text-primary">Portofolio</a>
-                        </li>
-                        <li class="group">
-                            <a href="#contact" class="flex text-base text-dark py-2 mx-8 group-hover:text-primary">Kontak</a>
-                        </li>
-                    </ul>
+                    <!-- Mobile Backdrop Overlay -->
+                    <div id="nav-backdrop" onclick="toggleMobileNav(true)" class="fixed inset-0 bg-dark/30 backdrop-blur-xs z-40 lg:hidden hidden opacity-0 transition-opacity duration-300"></div>
+
+                    <!-- Nav Menu Items -->
+                    <nav id="nav-menu" class="hidden absolute top-full right-4 mt-2 w-[calc(100vw-2rem)] max-w-[280px] bg-white/95 backdrop-blur-md shadow-2xl rounded-2xl p-3 border border-slate-200/90 z-50 transform origin-top-right transition-all duration-200 opacity-0 scale-95 -translate-y-2 lg:opacity-100 lg:scale-100 lg:translate-y-0 lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none lg:border-none lg:p-0">
+                        <ul class="block lg:flex lg:items-center space-y-1.5 lg:space-y-0 lg:gap-1">
+                            <li>
+                                <a href="#home" onclick="toggleMobileNav(true)" class="nav-link flex items-center justify-between text-sm lg:text-base text-dark py-2.5 px-4 rounded-xl hover:bg-slate-100/80 lg:hover:bg-transparent hover:text-primary transition duration-200 font-medium">
+                                    <span class="flex items-center gap-2.5">
+                                        <span class="text-base lg:hidden">🏠</span>
+                                        <span>Beranda</span>
+                                    </span>
+                                    <span class="text-xs text-slate-400 lg:hidden">→</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#about" onclick="toggleMobileNav(true)" class="nav-link flex items-center justify-between text-sm lg:text-base text-dark py-2.5 px-4 rounded-xl hover:bg-slate-100/80 lg:hover:bg-transparent hover:text-primary transition duration-200 font-medium">
+                                    <span class="flex items-center gap-2.5">
+                                        <span class="text-base lg:hidden">👤</span>
+                                        <span>Tentang</span>
+                                    </span>
+                                    <span class="text-xs text-slate-400 lg:hidden">→</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#portfolio" onclick="toggleMobileNav(true)" class="nav-link flex items-center justify-between text-sm lg:text-base text-dark py-2.5 px-4 rounded-xl hover:bg-slate-100/80 lg:hover:bg-transparent hover:text-primary transition duration-200 font-medium">
+                                    <span class="flex items-center gap-2.5">
+                                        <span class="text-base lg:hidden">🚀</span>
+                                        <span>Portofolio</span>
+                                    </span>
+                                    <span class="text-xs text-slate-400 lg:hidden">→</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#skills" onclick="toggleMobileNav(true)" class="nav-link flex items-center justify-between text-sm lg:text-base text-dark py-2.5 px-4 rounded-xl hover:bg-slate-100/80 lg:hover:bg-transparent hover:text-primary transition duration-200 font-medium">
+                                    <span class="flex items-center gap-2.5">
+                                        <span class="text-base lg:hidden">⚡</span>
+                                        <span>Keahlian</span>
+                                    </span>
+                                    <span class="text-xs text-slate-400 lg:hidden">→</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact" onclick="toggleMobileNav(true)" class="nav-link flex items-center justify-between text-sm lg:text-base text-dark py-2.5 px-4 rounded-xl hover:bg-slate-100/80 lg:hover:bg-transparent hover:text-primary transition duration-200 font-medium">
+                                    <span class="flex items-center gap-2.5">
+                                        <span class="text-base lg:hidden">✉️</span>
+                                        <span>Kontak</span>
+                                    </span>
+                                    <span class="text-xs text-slate-400 lg:hidden">→</span>
+                                </a>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
             </div>
@@ -105,510 +234,1131 @@
     <!-- Header End -->
 
     <!-- Hero Section Start -->
-    <section id="home" class="pt-36">
-    <div class="mx-auto px-4 max-w-6xl">
-        <div class="flex flex-wrap">
-            <div class="w-full self-center px-4 lg:w-1/2">
-                <h1 class="text-base font-semibold text-primary md:text-xl">Halo Semua! Saya <span class="block font-bold text-dark text-4xl lg:text-5xl mt-1">Bastian Yudistira Movic 👋</span></h1>
-                <h2 class="font-medium text-slate-500 text-base sm:text-lg lg:text-xl mb-6">Junior Web Developer | Front-End Enthusiast</h2>
-                <p class="font-medium text-secondary mb-10 leading-relaxed text-justify">Saya adalah siswa SMK jurusan <span class="text-dark font-bold">Rekayasa Perangkat Lunak (RPL)</span> dengan kemampuan dasar Full-Stack Developmentyang lebih berfokus pada pengembangan Front-End.</p>
-                <a href="#contact" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">Hubungi Saya</a>
+    <section id="home" class="pt-32 pb-20 lg:pt-40 lg:pb-28 relative overflow-hidden">
+        <!-- Subtle Background Glow -->
+        <div class="absolute top-16 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-teal-100/40 rounded-full blur-3xl -z-20 pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-wrap items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="w-full self-center px-4 lg:w-1/2 reveal-on-scroll">
+                    <!-- Live Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-teal-50 text-teal-700 border border-teal-200/80 mb-5 shadow-sm">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+                        </span>
+                        Siswa RPL • Terbuka untuk Peluang & Kolaborasi
+                    </div>
+
+                    <h1 class="text-base font-semibold text-primary md:text-xl">
+                        Halo Semua! Saya 
+                        <span class="block font-extrabold text-dark text-4xl sm:text-5xl lg:text-5xl mt-2 tracking-tight leading-tight">
+                            Bastian Yudistira Movic <span class="inline-block hover:rotate-12 transition-transform duration-300 cursor-pointer">👋</span>
+                        </span>
+                    </h1>
+
+                    <!-- Dynamic Subtitle with Typewriter -->
+                    <div class="font-medium text-slate-600 text-lg sm:text-xl lg:text-2xl mt-3 mb-6 flex items-center min-h-[36px]">
+                        <span id="typewriter-text" class="text-primary font-semibold"></span>
+                        <span class="inline-block w-[3px] h-6 bg-primary ml-1.5 animate-pulse"></span>
+                    </div>
+
+                    <p class="font-normal text-secondary mb-8 leading-relaxed text-base sm:text-lg max-w-xl text-justify">
+                        Saya adalah siswa SMK jurusan <span class="text-dark font-semibold">Rekayasa Perangkat Lunak (RPL)</span> dengan kemampuan dasar Full-Stack Development yang lebih berfokus pada pengembangan Front-End modern, responsif, dan interaktif.
+                    </p>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#contact" class="inline-flex items-center gap-2 text-base font-semibold text-white bg-primary py-3.5 px-8 rounded-full shadow-lg shadow-teal-500/25 hover:bg-primary-dark hover:shadow-teal-600/30 hover:-translate-y-0.5 transition-all duration-300 ease-in-out">
+                            Hubungi Saya
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                        <a href="#portfolio" class="inline-flex items-center gap-2 text-base font-semibold text-slate-700 bg-white border border-slate-300 py-3.5 px-7 rounded-full hover:border-primary hover:text-primary hover:bg-teal-50/50 hover:-translate-y-0.5 transition-all duration-300 ease-in-out">
+                            Lihat Portofolio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Avatar & Organic Teal Blob + Floating Chips -->
+                <div class="w-full self-end px-4 lg:w-1/2 mt-12 lg:mt-0 reveal-on-scroll">
+                    <div class="relative flex justify-center lg:justify-end">
+                        <div class="relative max-w-[320px] sm:max-w-md w-full">
+                            
+                            <!-- Floating Badge 1: HTML & CSS (Top-Left) -->
+                            <div class="absolute -top-3 -left-3 sm:-left-6 bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-slow">
+                                <span class="text-lg sm:text-xl">⚡</span>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Frontend</p>
+                                    <p class="text-xs sm:text-sm font-bold text-dark">HTML, CSS & Vue.js</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 2: PHP & Laravel (Top-Right) -->
+                            <div class="absolute top-8 -right-3 sm:-right-6 bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-delayed">
+                                <span class="text-lg sm:text-xl">🐘</span>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Backend</p>
+                                    <p class="text-xs sm:text-sm font-bold text-dark">PHP & Laravel</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 3: JavaScript (Bottom-Left) -->
+                            <div class="absolute bottom-12 -left-2 sm:-left-4 bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-delayed">
+                                <span class="text-lg sm:text-xl">⚛️</span>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Interactive</p>
+                                    <p class="text-xs sm:text-sm font-bold text-dark">JavaScript</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 4: Tailwind CSS (Bottom-Right) -->
+                            <div class="absolute -bottom-2 right-4 bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-slow">
+                                <span class="text-lg sm:text-xl">🎨</span>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Styling</p>
+                                    <p class="text-xs sm:text-sm font-bold text-dark">Tailwind CSS</p>
+                                </div>
+                            </div>
+
+                            <!-- Bastian Photo -->
+                            <img src="dist/img/foto12.png" alt="Bastian Yudistira Movic" class="w-full relative z-10 drop-shadow-md">
+
+                            <!-- Signature Teal Blob SVG -->
+                            <span class="absolute -bottom-6 -md:bottom-2 -z-10 md:left-28 left-20 -translate-x-6 md:scale-150 scale-110 opacity-90 transition-transform duration-700 hover:scale-125">
+                                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+                                    <path fill="#08BDBA" d="M48.7,-53.2C60,-37.5,63.6,-18.8,64.4,0.8C65.2,20.3,63,40.6,51.8,51.3C40.6,62.1,20.3,63.3,3,60.3C-14.2,57.3,-28.4,50,-42.8,39.2C-57.1,28.4,-71.6,14.2,-70.8,0.9C-69.9,-12.5,-53.6,-24.9,-39.3,-40.6C-24.9,-56.2,-12.5,-75,3.1,-78.2C18.8,-81.3,37.5,-68.8,48.7,-53.2Z"
+                                    transform="translate(100 100) scale(1.27)">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-           <div class="w-full self-end px-4 lg:w-1/2">
-    <div class="relative mt-10 lg:mt-9 flex justify-center lg:justify-end">
-        <div class="relative max-w-[300px] lg:max-w-md">
-            <img src="dist/img/foto12.png" alt="Bastian" class="w-full">
-            <span class="absolute -bottom-6 -md:bottom-2 -z-10 md:left-28 left-20 -translate-x-6 md:scale-150 scale-110">
-                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300">
-                    <path fill="#08BDBA" d="M48.7,-53.2C60,-37.5,63.6,-18.8,64.4,0.8C65.2,20.3,63,40.6,51.8,51.3C40.6,62.1,20.3,63.3,3,60.3C-14.2,57.3,-28.4,50,-42.8,39.2C-57.1,28.4,-71.6,14.2,-70.8,0.9C-69.9,-12.5,-53.6,-24.9,-39.3,-40.6C-24.9,-56.2,-12.5,-75,3.1,-78.2C18.8,-81.3,37.5,-68.8,48.7,-53.2Z"
-                    transform="translate(100 100) scale(1.27)">
-                </svg>
-            </span>
         </div>
-    </div>
-</div>
-    </div>
     </section>
     <!-- Hero Section End -->
 
     <!-- About Section Start -->
-    <section id="about" class="pt-36 pb-32">
-        <div class="mx-auto px-4 max-w-6xl">
-        <div class="flex flex-wrap">
-            <div class="w-full px-4 mb-10 lg:w-1/2 self-center">
-                <h4 class="uppercase font-bold text-primary text-lg mb-3">Tentang Saya</h4>
-                <h2 class="font-bold text-dark text-3xl mb-5  max-w-md lg:text-4xl">Yuk, Kenalan sama Bastian!</h2>
-                <p class="font-medium text-base text-secondary max-w-xl text-justify lg:text-lg">Saya mengerjakan frontend dan backend menggunakan HTML, CSS,
-                    JavaScript, PHP, dan Laravel. Saya familiar dalam membuat sistem
-                    CRUD dan mengelola database MySQL. Untuk tampilan, saya
-                    sering memakai template dan UI framework agar hasil cepat 
-                    dan rapi. Saat ini saya memperdalam Tailwind dan framework seperti Vue js.</p>
+    <section id="about" class="pt-28 pb-24 bg-slate-50/70 border-y border-slate-200/60">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-wrap items-center">
+                
+                <!-- Left Column: Story & Quick Info -->
+                <div class="w-full px-4 mb-12 lg:mb-0 lg:w-7/12 reveal-on-scroll">
+                    <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary bg-teal-50 border border-teal-200/60 mb-3">
+                        Tentang Saya
+                    </div>
+                    <h2 class="font-extrabold text-dark text-3xl sm:text-4xl mb-6 tracking-tight">
+                        Yuk, Kenalan sama Bastian!
+                    </h2>
+                    <p class="font-normal text-base sm:text-lg text-secondary leading-relaxed mb-6 mr-4 text-justify">
+                        Saya mengerjakan frontend dan backend menggunakan HTML, CSS, JavaScript, PHP, dan Laravel. Saya familiar dalam membuat sistem CRUD dan mengelola database MySQL. Untuk tampilan, saya sering memakai template dan UI framework agar hasil cepat, konsisten, dan rapi. Saat ini saya terus memperdalam Tailwind CSS dan ekosistem framework modern lainnya.
+                    </p>
+
+                    <!-- Highlight Highlights Cards -->
+                    <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-6">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm hover:border-primary/50 transition duration-300">
+                            <span class="text-2xl mb-2 block">🎓</span>
+                            <h4 class="font-bold text-dark text-sm sm:text-base">Pendidikan</h4>
+                            <p class="text-xs sm:text-sm text-secondary">SMK Rekayasa Perangkat Lunak</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm hover:border-primary/50 transition duration-300">
+                            <span class="text-2xl mb-2 block">💻</span>
+                            <h4 class="font-bold text-dark text-sm sm:text-base">Fokus Utama</h4>
+                            <p class="text-xs sm:text-sm text-secondary">Front-End & Dasar Full-Stack</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm hover:border-primary/50 transition duration-300">
+                            <span class="text-2xl mb-2 block">🚀</span>
+                            <h4 class="font-bold text-dark text-sm sm:text-base">Keahlian Praktis</h4>
+                            <p class="text-xs sm:text-sm text-secondary">CRUD, REST API, Web Responsive</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm hover:border-primary/50 transition duration-300">
+                            <span class="text-2xl mb-2 block">📍</span>
+                            <h4 class="font-bold text-dark text-sm sm:text-base">Lokasi</h4>
+                            <p class="text-xs sm:text-sm text-secondary">Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Social Connection Cards -->
+                <div class="w-full px-4 lg:w-5/12 reveal-on-scroll">
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-md">
+                        <h3 class="font-bold text-dark mb-2 text-2xl">Mari Berteman</h3>
+                        <p class="font-normal text-sm sm:text-base text-secondary mb-6 leading-relaxed text-justify">
+                            Saya aktif di sejumlah kanal media sosial dan terbuka untuk koneksi profesional maupun diskusi projek.
+                        </p>
+
+                        <div class="space-y-3">
+                            <!-- Instagram Card -->
+                            <a href="https://www.instagram.com/bas_movic/" target="_blank" rel="noopener noreferrer" 
+                               class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 hover:border-pink-300 hover:bg-pink-50/40 transition duration-300 group">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 group-hover:scale-110 transition duration-300">
+                                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Instagram</p>
+                                        <p class="text-sm font-semibold text-dark">@bas_movic</p>
+                                    </div>
+                                </div>
+                                <span class="text-slate-400 group-hover:text-pink-500 group-hover:translate-x-1 transition duration-300">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </span>
+                            </a>
+
+                            <!-- GitHub Card -->
+                            <a href="https://github.com/MyYuvii" target="_blank" rel="noopener noreferrer" 
+                               class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 hover:border-slate-800 hover:bg-slate-100/70 transition duration-300 group">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-dark group-hover:scale-110 transition duration-300">
+                                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">GitHub</p>
+                                        <p class="text-sm font-semibold text-dark">@MyYuvii</p>
+                                    </div>
+                                </div>
+                                <span class="text-slate-400 group-hover:text-dark group-hover:translate-x-1 transition duration-300">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </span>
+                            </a>
+
+                            <!-- LinkedIn Card -->
+                            <a href="https://www.linkedin.com/in/bastian-movic-680ba7383" target="_blank" rel="noopener noreferrer" 
+                               class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/40 transition duration-300 group">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:scale-110 transition duration-300">
+                                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">LinkedIn</p>
+                                        <p class="text-sm font-semibold text-dark">Bastian Movic</p>
+                                    </div>
+                                </div>
+                                <span class="text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition duration-300">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="w-full px-4 lg:w-1/2">
-                <h3 class="font-semibold text-dark mb-4 text-2xl lg:pt-10">Mari Berteman</h3>
-                <p class="font-medium text-base text-secondary max-w-xl text-justify mb-6 lg:text-lg">
-                     Saya juga aktif di sejumlah kanal media sosial. Di bawah ini adalah akun akun resmi saya pribadi.</p>
-                     
-                     <div class="flex items-center">
-
-                        <!-- Instagram -->
-                        <a href="https://www.instagram.com/bas_movic/" target="_blank" 
-                        class="w-9 h-9 mr-3 flex rounded-full justify-center items-center
-                        border border-slate-300 hover:border-primary hover:bg-primary
-                        hover:text-white text-secondary transition hover:scale-110 duration-500">
-                            <svg role="img" class="fill-current" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
-                        </a>
-
-                        <!-- TikTok
-                         <a href="https://www.tiktok.com/@mybuu_5" target="_blank" 
-                        class="w-9 h-9 mr-3 flex rounded-full justify-center items-center
-                        border border-slate-300 hover:border-primary hover:bg-primary
-                        hover:text-white text-secondary transition hover:scale-110 duration-500">
-                            <svg role="img" class="fill-current" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>TikTok</title><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                        </a> -->
-
-                        <!-- GitHub -->
-                        <a href="https://github.com/MyYuvii" target="_blank" 
-                        class="w-9 h-9 mr-3 flex rounded-full justify-center items-center
-                        border border-slate-300 hover:border-primary hover:bg-primary
-                        hover:text-white text-secondary transition hover:scale-110 duration-500">
-                            <svg role="img" class="fill-current" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                        </a>
-
-                        <!-- LinkedIn -->
-                        <a href="https://www.linkedin.com/in/bastian-movic-680ba7383" target="_blank" 
-                        class="w-9 h-9 mr-3 flex rounded-full justify-center items-center
-                        border border-slate-300 hover:border-primary hover:bg-primary
-                        hover:text-white text-secondary transition hover:scale-110 duration-500">
-                            <svg role="img" class="fill-current" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <title>LinkedIn</title>
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-                        </svg>
-                        </a>
-
-
-                     </div>
+            <!-- Tech Stack & Tools Showcase Bar -->
+            <div class="mt-16 pt-12 border-t border-slate-200/80 reveal-on-scroll">
+                <p class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">
+                    Teknologi & Tools yang Sering Digunakan
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <img src="dist/img/html-5.png" alt="HTML5" class="w-6 h-6 object-contain">
+                        <span class="text-xs sm:text-sm font-semibold text-dark">HTML5</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <img src="dist/img/css-3.png" alt="CSS3" class="w-6 h-6 object-contain">
+                        <span class="text-xs sm:text-sm font-semibold text-dark">CSS3</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <img src="dist/img/js.png" alt="JavaScript" class="w-6 h-6 object-contain">
+                        <span class="text-xs sm:text-sm font-semibold text-dark">JavaScript</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <img src="dist/img/php.png" alt="PHP" class="w-6 h-6 object-contain">
+                        <span class="text-xs sm:text-sm font-semibold text-dark">PHP</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <span class="text-sm font-bold text-teal-500">#</span>
+                        <span class="text-xs sm:text-sm font-semibold text-dark">Tailwind CSS</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <span class="text-sm font-bold text-red-500">◈</span>
+                        <span class="text-xs sm:text-sm font-semibold text-dark">Laravel</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <span class="text-sm font-bold text-sky-600">⛁</span>
+                        <span class="text-xs sm:text-sm font-semibold text-dark">MySQL</span>
+                    </div>
+                </div>
             </div>
+
         </div>
-    </div>
     </section>
     <!-- About Section End -->
-    
-    <!-- Skill Section Start -->
-    <section id="skills" class="py-12 pb-16 bg-slate-100">
-     <div class="lg:max-w-6xl max-w-80 mx-auto px-2 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h4 class="font-semibold text-lg text-primary mb-2 mt-20">Keahlian</h4>
-                    <p class="font-medium text-md text-secondary  mb-10">Berikut adalah beberapa hard skill dan soft skill yang saya miliki</p>
-                    </div>
-           <div class="max-w-xl mx-auto text-center mb-16">
-                    <h2 class="font-bold text-dark text-3xl">Hard Skills</h2>
-                    
+
+    <!-- Portfolio Section Start -->
+    <section id="portfolio" class="py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            
+            <!-- Section Header -->
+            <div class="max-w-2xl mx-auto text-center mb-10 reveal-on-scroll">
+                <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary bg-teal-50 border border-teal-200/60 mb-3">
+                    Portofolio
                 </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+                <h2 class="font-extrabold text-dark text-3xl sm:text-4xl mb-4 tracking-tight">
+                    Software Engineering Projects
+                </h2>
+                <p class="font-normal text-base text-secondary">
+                    Berikut adalah kumpulan projek perangkat lunak yang pernah saya buat, mulai dari aplikasi web full-stack hingga tools interaktif.<br>Daftar Projek diurutkan dari yang terlama hingga terbaru.
+                </p>
+            </div>
 
-                <!-- Card 1 -->
-                <div class="bg-white rounded-lg shadow-md transition lg:hover:scale-105 hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/programming.png" alt="HTML" class="w-1/2 sm:w-1/2 h-full object-cover">
+            <!-- Interactive Portfolio Category Filter Tabs -->
+            <div class="flex justify-center items-center gap-3 mb-12 flex-wrap">
+                <button type="button" data-filter="all" onclick="filterPortfolio('all')" class="portfolio-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-primary text-white shadow-md shadow-teal-500/25">
+                    Semua Projek (6)
+                </button>
+                <button type="button" data-filter="webapp" onclick="filterPortfolio('webapp')" class="portfolio-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
+                    Web Application (3)
+                </button>
+                <button type="button" data-filter="tools" onclick="filterPortfolio('tools')" class="portfolio-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
+                    Mini Tools (2)
+                </button>
+                <button type="button" data-filter="game" onclick="filterPortfolio('game')" class="portfolio-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
+                    Python Game (1)
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project 1: Perpustakaan -->
+                <div data-category="webapp" class="portfolio-card bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <!-- Project Image Container with Zoom -->
+                        <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                            <img src="dist/img/crud.png" alt="Sistem Informasi Perpustakaan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
+                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                                Web Application
+                            </span>
+                        </div>
+
+                        <div class="p-6">
+                            <!-- Tech Badges -->
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="text-[11px] font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">PHP</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">MySQL</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Bootstrap</span>
+                            </div>
+
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                                Perpustakaan
+                            </h3>
+                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                                Website perpustakaan sederhana. Pengunjung hanya dapat melihat daftar buku, sedangkan admin dapat membuat, mengubah, maupun menghapus data buku secara terstruktur.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-4">
-                    <h3 class="text-lg sm:text-lg font-bold text-dark mb-1 text-center">Front-End Web Development</h3>
-                    <p class="text-sm sm:text-base text-secondary text-justify">I have a decent understanding of building websites with HTML, CSS or Tailwind, and JavaScript. I am able to create various types of websites based on their function and design.</p>
+
+                    <!-- Action Buttons -->
+                    <div class="p-6 pt-0 flex items-center gap-3">
+                        <button type="button" data-project="perpustakaan" onclick="openProjectModal('perpustakaan')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                            Lihat Detail
+                        </button>
+                        <a href="https://github.com/MyYuvii/Perpustakaan" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-              <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/server.png" alt="PHP" class="w-1/2 sm:w-1/2 h-full">
-                    </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Back-End Web Development</h3>
-                    <p class="text-sm text-secondary text-justify">Experienced in building web applications with PHP, familiar with CRUD operations, Laravel framework, API Stripe and Jetstream. Also familiar with database integration, routing, and MVC structure.</p>
-                    </div>
-                </div> 
+                <!-- Project 2: Number Guesser -->
+                <div data-category="game" class="portfolio-card bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                            <img src="dist/img/pythongame.png" alt="Number Guesser Game" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
+                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                                Python Game
+                            </span>
+                        </div>
 
-                <!-- Card 3 -->
-                 <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/excel.png" alt="python" class="w-1/2 sm:w-1/2 h-full">
+                        <div class="p-6">
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="text-[11px] font-medium bg-amber-50 text-amber-700 px-2.5 py-0.5 rounded-md border border-amber-200/60">Python</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Logic Algorithm</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CLI</span>
+                            </div>
+
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                                Number Guesser Game
+                            </h3>
+                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                                Game python sederhana yang mengharuskan pemain menebak angka acak dari 1 sampai 1.000 dengan sesedikit mungkin jumlah percobaan berdasarkan petunjuk sistem.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Microsoft Excel</h3>
-                    <p class="text-sm text-slate-500 text-justify">Have some experience with Microsoft Excel, including data analysis, data organization, and using formulas to manipulate data.</p>
+
+                    <div class="p-6 pt-0 flex items-center gap-3">
+                        <button type="button" data-project="number-guesser" onclick="openProjectModal('number-guesser')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                            Lihat Detail
+                        </button>
+                        <a href="https://github.com/MyYuvii/Game-Tebak-Angka" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-               <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/word.png" alt="English" class="w-1/2 sm:w-1/2 h-full object-cover">
+                <!-- Project 3: Jam Digital -->
+                <div data-category="tools" class="portfolio-card bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                            <img src="dist/img/Jam.png" alt="Jam Digital" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
+                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                                Interactive Tool
+                            </span>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="text-[11px] font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">HTML5</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CSS3</span>
+                                <span class="text-[11px] font-medium bg-yellow-50 text-yellow-700 px-2.5 py-0.5 rounded-md border border-yellow-200/60">JavaScript</span>
+                            </div>
+
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                                Jam Digital
+                            </h3>
+                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                                Jam digital berbasis web dengan pembaruan waktu real-time, format jam digital yang presisi, serta desain minimalis dan adaptif.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Microsoft Word</h3>
-                    <p class="text-sm text-slate-500 text-justify">Have some experience with Microsoft Word, including document formatting, editing, and creating some professional reports.</p>
+
+                    <div class="p-6 pt-0 flex items-center gap-2">
+                        <button type="button" data-project="jam-digital" onclick="openProjectModal('jam-digital')" class="open-detail-btn flex-1 text-center text-xs sm:text-sm font-semibold text-white bg-primary py-2.5 px-3 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                            Detail
+                        </button>
+                        <a href="https://myyuvii.github.io/Jam-Digital/" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-teal-700 bg-teal-50 border border-teal-200/80 py-2.5 px-3 rounded-xl hover:bg-teal-100/70 transition duration-200 flex items-center gap-1">
+                            Demo
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <a href="https://github.com/MyYuvii/Jam-Digital" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Card 5 -->
-               <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/eng.png" alt="English" class="w-1/2 sm:w-1/2 h-full object-cover">
+                <!-- Project 4: Kalkulator Sederhana -->
+                <div data-category="tools" class="portfolio-card bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                            <img src="dist/img/Kalkulator.png" alt="Kalkulator Sederhana" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
+                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                                Calculator Tool
+                            </span>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="text-[11px] font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">PHP</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">JavaScript</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CSS3</span>
+                            </div>
+
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                                Kalkulator Sederhana
+                            </h3>
+                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                                Kalkulator web yang memproses kalkulasi penjumlahan, pengurangan, perkalian, dan pembagian secara cepat dan akurat.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">English</h3>
-                    <p class="text-sm text-slate-500 text-justify">I am capable of using english for daily conversation, discussion, presentasion, and speech. My english level is around B1 or B2.</p>
+
+                    <div class="p-6 pt-0 flex items-center gap-3">
+                        <button type="button" data-project="kalkulator" onclick="openProjectModal('kalkulator')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                            Lihat Detail
+                        </button>
+                        <a href="https://github.com/MyYuvii/Kalkulator" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
                     </div>
                 </div>
 
+                <!-- Project 5: Toko Buku Online -->
+                <div data-category="webapp" class="portfolio-card bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                            <img src="dist/img/etoko.png" alt="Toko Buku Online" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
+                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                                E-Commerce Fullstack
+                            </span>
+                        </div>
 
-                <!-- Card 6 -->
-                
+                        <div class="p-6">
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="text-[11px] font-medium bg-red-50 text-red-600 px-2.5 py-0.5 rounded-md border border-red-200/60">Laravel</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Jetstream</span>
+                                <span class="text-[11px] font-medium bg-indigo-50 text-indigo-600 px-2.5 py-0.5 rounded-md border border-indigo-200/60">Stripe API</span>
+                            </div>
 
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                                Toko Buku Online
+                            </h3>
+                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                                Toko buku fullstack dengan Laravel & Jetstream, pembayaran via Stripe API, keranjang belanja, manajemen order, serta dashboard analitik penjualan bagi admin.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0 flex items-center gap-3">
+                        <button type="button" data-project="toko-buku" onclick="openProjectModal('toko-buku')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                            Lihat Detail
+                        </button>
+                        <a href="https://github.com/MyYuvii/Online-Store---Book-Store" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 6: Nuvix Travel -->
+                <div data-category="webapp" class="portfolio-card bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
+                            <img src="dist/img/ukk.png" alt="Nuvix Travel" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
+                            <span class="absolute top-3 left-3 bg-teal-600 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-xs">
+                                Team Project
+                            </span>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="text-[11px] font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">Frontend Lead</span>
+                                <span class="text-[11px] font-medium bg-blue-50 text-blue-600 px-2.5 py-0.5 rounded-md border border-blue-200/60">Vue.js</span>
+                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">UI/UX Slicing</span>
+                            </div>
+
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                                Nuvix Travel
+                            </h3>
+                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                                Projek tim untuk mempermudah sistem administrasi dan pelaporan keuangan perjalanan dinas, dengan alur pengajuan, verifikasi, dan pencairan dana real-time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0 flex items-center gap-3">
+                        <button type="button" data-project="nuvix-travel" onclick="openProjectModal('nuvix-travel')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                            Lihat Detail
+                        </button>
+                        <a href="https://github.com/Farhanrafiansyah/nuxix-travel" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
+    <!-- Portfolio Section End -->
 
-        <div class="max-w-xl mx-auto text-center mb-16">
-                    <h2 class="font-bold text-dark text-3xl mt-16">Soft Skills</h2>
-                    
+    <!-- Skill Section Start -->
+    <section id="skills" class="py-24 bg-slate-100/80">
+        <div class="container mx-auto px-4 max-w-6xl">
+            
+            <!-- Section Header -->
+            <div class="max-w-2xl mx-auto text-center mb-10 reveal-on-scroll">
+                <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary bg-white border border-teal-200/60 mb-3 shadow-xs">
+                    Keahlian
                 </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                <h2 class="font-extrabold text-dark text-3xl sm:text-4xl mb-4 tracking-tight">
+                    Keahlian Teknis & Interpersonal
+                </h2>
+                <p class="font-normal text-base text-secondary">
+                    Berikut adalah keahlian teknis (hard skills) dan kemampuan interpersonal (soft skills) yang saya miliki.
+                </p>
+            </div>
 
-                <!-- Card 1 -->
-                <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/idea.png" alt="solving" class="w-1/2 sm:w-1/2 h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Problem Solving</h3>
-                    <p class="text-sm text-secondary text-justify">I am skilled at identifying and analyzing patterns in problems, and developing effective solutions. I approach challenges with a logical and analytical mindset, ensuring that the best possible outcomes are achieved.</p>
-                    </div>
-                </div>
+            <!-- Interactive Skill Category Filter Tabs -->
+            <div class="flex justify-center items-center gap-3 mb-12 flex-wrap">
+                <button type="button" data-filter="all" onclick="filterSkills('all')" class="skill-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-primary text-white shadow-md shadow-teal-500/25">
+                    Semua Keahlian (11)
+                </button>
+                <button type="button" data-filter="hard" onclick="filterSkills('hard')" class="skill-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
+                    Hard Skills (5)
+                </button>
+                <button type="button" data-filter="soft" onclick="filterSkills('soft')" class="skill-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
+                    Soft Skills (6)
+                </button>
+            </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/creative.png" alt="creative" class="w-1/2 sm:w-1/2 h-full object-cover">
+            <!-- HARD SKILLS CONTAINER -->
+            <div id="hard-skills-container" class="transition-all duration-300">
+                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200/80">
+                    <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-primary flex items-center justify-center text-lg">
+                        💻
                     </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Creativity</h3>
-                    <p class="text-sm text-secondary text-justify">Highly creative with strong ability to generate original ideas and innovative solutions. Skilled at thinking beyond conventional approaches and developing unique concepts that bring value in different contexts.</p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/conference.png" alt="leadership" class="w-1/2 sm:w-1/2 h-full">
-                    </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Team Work</h3>
-                    <p class="text-sm text-secondary text-justify">I am flexible with both personal and team projects. Nevertheless, I value diverse perspectives and contribute positively to group dynamics.</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                 <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/emotions.png" alt="English" class="w-1/2 sm:w-1/2 h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Empathy</h3>
-                    <p class="text-sm text-slate-500 text-justify">I have strong self-awareness, which helps me pause before reacting impulsively. It helps me to read other people's emotions, so I can respond appropriately in any social situations.</p>
+                    <div>
+                        <h3 class="font-extrabold text-dark text-2xl tracking-tight">Hard Skills</h3>
+                        <p class="text-xs text-secondary">5 Keahlian Teknis Pemrograman, Bahasa, & Produktivitas</p>
                     </div>
                 </div>
 
-                <!-- Card 5 -->
-                 <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/conference1.png" alt="English" class="w-1/2 sm:w-1/2 h-full object-cover">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+                    <!-- Hard Skill 1: Frontend Development -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                    Hard Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Web Frontend</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
+                                <img src="dist/img/programming.png" alt="Front-End Development" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Frontend Development</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Pemahaman dalam membangun website responsif dengan HTML, CSS / Tailwind, dan JavaScript. Mampu merancang beragam antarmuka sesuai fungsi dan desain.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Communication</h3>
-                    <p class="text-sm text-slate-500 text-justify">I can communicate effectively with others about my ideas, opinions, and concerns in both written and verbal forms. So that a good understanding can be achieved and make the tasks easier.</p>
+
+                    <!-- Hard Skill 2: Backend Development -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                    Hard Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Web Backend</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
+                                <img src="dist/img/server.png" alt="Back-End Development" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Backend Development</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Pengalaman membangun web application dengan PHP, operasi CRUD, framework Laravel, integrasi database MySQL, arsitektur MVC, dan API pembayaran Stripe.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Hard Skill 3: Microsoft Word -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                    Hard Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Dokumentasi</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
+                                <img src="dist/img/word.png" alt="Microsoft Word" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Microsoft Word</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Pengalaman dalam pemformatan dokumen terstruktur, penyusunan laporan teknis, dan administrasi berkas secara rapi dan profesional.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Hard Skill 4: Microsoft Excel -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                    Hard Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Olah Data</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
+                                <img src="dist/img/excel.png" alt="Microsoft Excel" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Microsoft Excel</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Mampu melakukan pengorganisasian data, analisis dasar, serta memanfaatkan formula dan fungsi logika Excel untuk manipulasi data secara efisien.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Hard Skill 5: English -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                    Hard Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">B1 - B2 Level</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
+                                <img src="dist/img/eng.png" alt="English Language" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">English (Bahasa Inggris)</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Mampu berkomunikasi dalam bahasa Inggris untuk percakapan sehari-hari, membaca dokumentasi teknis pemrograman, diskusi, dan presentasi.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SOFT SKILLS CONTAINER -->
+            <div id="soft-skills-container" class="transition-all duration-300">
+                <div class="flex items-center gap-3 mb-6 pb-3 border-b border-slate-200/80">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-lg">
+                        🤝
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-dark text-2xl tracking-tight">Soft Skills</h3>
+                        <p class="text-xs text-secondary">6 Kemampuan Interpersonal, Pola Pikir Kerja, & Kolaborasi</p>
                     </div>
                 </div>
 
-                <!-- Card 6 -->
-                 <div class="bg-white rounded-lg shadow-md transition hover:scale-105">
-                    <div class="w-full flex items-center justify-center mt-5">
-                    <img src="dist/img/attention-to-detail.png" alt="English" class="w-1/2 sm:w-1/2 h-full object-cover">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Soft Skill 1: Problem Solving -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                    Soft Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Analytical</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
+                                <img src="dist/img/idea.png" alt="Problem Solving" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Problem Solving</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Terampil mengidentifikasi dan membedah pola masalah teknis, serta merancang solusi efektif dengan alur berpikir analitis dan sistematis.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-4">
-                    <h3 class="text-lg font-bold text-dark mb-1 text-center">Attention to Detail</h3>
-                    <p class="text-sm text-slate-500 text-justify">I pay close attention to details in my work, ensuring accuracy and quality in every task I undertake. No mistake shall escape my sight. Well, some might though...</p>
+
+                    <!-- Soft Skill 2: Creativity -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                    Soft Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Creative</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
+                                <img src="dist/img/creative.png" alt="Creativity" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Creativity</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Memiliki daya kreasi dalam melahirkan ide orisinal dan solusi tampilan yang inovatif, berpikir di luar batas konvensional untuk nilai tambah projek.
+                            </p>
+                        </div>
                     </div>
+
+                    <!-- Soft Skill 3: Team Work -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                    Soft Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Collaboration</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
+                                <img src="dist/img/conference.png" alt="Team Work" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Team Work</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Fleksibel dan kooperatif baik dalam tugas mandiri maupun tim. Menghargai keragaman sudut pandang demi mencapai sasaran kelompok yang optimal.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skill 4: Empathy -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                    Soft Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Interpersonal</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
+                                <img src="dist/img/emotions.png" alt="Empathy" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Empathy</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Memiliki kepekaan diri yang baik, mendengarkan kebutuhan rekan tim atau pengguna, serta mampu merespons secara bijak dalam berbagai situasi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skill 5: Communication -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                    Soft Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Komunikasi</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
+                                <img src="dist/img/conference1.png" alt="Communication" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Communication</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Menyampaikan gagasan, pertanyaan, dan progres projek secara lugas baik lisan maupun tulisan, menciptakan kejelasan pemahaman kerja bersama.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skill 6: Attention to Detail -->
+                    <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                    Soft Skill
+                                </span>
+                                <span class="text-xs text-slate-400 font-medium">Quality Focus</span>
+                            </div>
+                            <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
+                                <img src="dist/img/attention-to-detail.png" alt="Attention to Detail" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Attention to Detail</h4>
+                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                                Memeriksa kembali susunan kode, tata letak visual, dan fungsionalitas aplikasi dengan cermat untuk memastikan mutu karya terbaik.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
 
         </div>
     </section>
     <!-- Skill Section End -->
 
-    <!-- Portfolio Section Start -->
-    <section id="portfolio" class="pt-6 pb-16 bg-slate-100">
-        <div class="mx-auto px-4 max-w-6xl">
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-lg text-primary pt-24 mb-2">Portofolio</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4">Software Engineering Projects</h2>
-                    <p class="font-medium text-md text-secondary">Berikut adalah projek projek terkait software engineer terbaru saya</p>
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="fixed inset-0 z-[1000] hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div id="modal-backdrop" onclick="closeProjectModal()" class="fixed inset-0 bg-dark/70 backdrop-blur-xs transition-opacity"></div>
+
+        <!-- Modal Box -->
+        <div class="modal-box relative bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl border border-slate-100 z-10 transform scale-95 opacity-0 transition-all duration-300">
+            <!-- Modal Close Button -->
+            <button id="modal-close" type="button" onclick="closeProjectModal()" aria-label="Tutup Detail" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/80 hover:bg-slate-100 text-slate-500 hover:text-dark flex items-center justify-center transition shadow-xs focus:outline-none">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- Modal Media & Carousel Container -->
+            <div id="modal-media-container" class="relative aspect-[16/9] w-full bg-slate-900 overflow-hidden select-none group">
+                <!-- Main Image Display -->
+                <img id="modal-image" src="" alt="Project Preview" class="w-full h-full object-contain sm:object-cover transition-opacity duration-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/75 via-transparent to-transparent pointer-events-none"></div>
+
+                <!-- Badge & Slide Counter -->
+                <div class="absolute bottom-4 left-6 flex items-center gap-2 z-10 pointer-events-none">
+                    <span id="modal-badge" class="px-3 py-1 text-xs font-semibold rounded-full bg-white/95 text-dark shadow-sm">
+                        Badge
+                    </span>
+                    <span id="modal-carousel-counter" class="hidden px-2.5 py-1 text-xs font-semibold rounded-full bg-dark/80 text-white backdrop-blur-xs border border-white/20 shadow-xs">
+                        1 / 1
+                    </span>
+                </div>
+
+                <!-- Navigation Arrow Buttons (Hidden when images.length <= 1) -->
+                <button type="button" id="modal-prev-btn" onclick="prevModalSlide(event)" aria-label="Gambar Sebelumnya" 
+                        class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-dark/60 hover:bg-dark/90 text-white flex items-center justify-center transition-all duration-200 backdrop-blur-xs border border-white/20 hover:scale-110 active:scale-95 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button type="button" id="modal-next-btn" onclick="nextModalSlide(event)" aria-label="Gambar Berikutnya" 
+                        class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-dark/60 hover:bg-dark/90 text-white flex items-center justify-center transition-all duration-200 backdrop-blur-xs border border-white/20 hover:scale-110 active:scale-95 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+
+                <!-- Caption Container (Top-Left) -->
+                <div id="modal-caption-container" class="hidden absolute top-4 left-4 right-16 z-10 pointer-events-none">
+                    <span id="modal-image-caption" class="inline-block text-xs font-medium text-white/95 bg-dark/75 backdrop-blur-xs px-3 py-1.5 rounded-lg border border-white/10 max-w-full truncate shadow-sm">
+                        Keterangan Screenshot
+                    </span>
+                </div>
+
+                <!-- Dot Indicators (Bottom-Right) -->
+                <div id="modal-carousel-dots" class="hidden absolute bottom-4 right-6 flex items-center gap-1.5 z-20">
+                    <!-- Dots dynamically injected via JS -->
                 </div>
             </div>
 
-            <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
-                <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/crud.png" alt="CRUD" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Perpustakaan</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify">Website perpustakaan sederhana. Pengunjung hanya dapat melihat daftar buku, sedangkan admin dapat membuat, mengubah, maupun menghapus data buku.</p>
-                            <!-- Tambahkan mt-auto di sini untuk mendorong ke bawah -->
-                            <a href="https://github.com/MyYuvii/Perpustakaan" target="_blank" class="text-center md:mr-52 mr-20 mt-auto text-base font-semibold text-white bg-primary py-2 px-6 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">Lihat Detail</a>
-                        </div>
+            <!-- Content -->
+            <div class="p-6 sm:p-8">
+                <h3 id="modal-title" class="text-2xl font-extrabold text-dark mb-3">
+                    Judul Projek
+                </h3>
+                
+                <p id="modal-desc" class="text-secondary text-sm sm:text-base leading-relaxed mb-6 text-justify">
+                    Deskripsi detail projek.
+                </p>
+
+                <!-- Features Section -->
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                        Fitur & Keunggulan Utama
+                    </h4>
+                    <ul id="modal-features" class="space-y-2">
+                        <!-- Injected via JS -->
+                    </ul>
+                </div>
+
+                <!-- Technologies Used -->
+                <div class="mb-8">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                        Teknologi yang Digunakan
+                    </h4>
+                    <div id="modal-tech" class="flex flex-wrap gap-2">
+                        <!-- Injected via JS -->
                     </div>
                 </div>
 
-                <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/pythongame.png" alt="Game" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Number Guesser Game</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify">Game python sederhana yang mengharuskan user untuk menebak 1 angka random dari 1 sampai 1,000. Cobalah untuk menebak angka nya dengan jumlah tebakan sedikit mungkin!</p>
-                            <!-- Tambahkan mt-auto di sini untuk mendorong ke bawah -->
-                            <a href="https://github.com/MyYuvii/Game-Tebak-Angka" target="_blank" class="text-center md:mr-52 mr-20 mt-auto text-base font-semibold text-white bg-primary py-2 px-6 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">Lihat Detail</a>
-                        </div>
-                    </div>
+                <!-- Action Footer -->
+                <div class="pt-6 border-t border-slate-100 flex items-center justify-end gap-3 flex-wrap">
+                    <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 py-2.5 px-5 rounded-xl transition duration-200">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        Buka Repositori GitHub
+                    </a>
+                    <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-white bg-primary hover:bg-primary-dark py-2.5 px-5 rounded-xl transition duration-200 shadow-sm">
+                        <span>Lihat Demo Live</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
                 </div>
-
-                <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/Jam.png" alt="Jam" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Jam Digital</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify">Jam digital sederhana yang dibuat menggunakan HTML, CSS, dan JS.</p>
-                            <!-- Tambahkan mt-auto di sini untuk mendorong ke bawah -->
-                            <div class="mt-auto flex gap-3">
-                                <a href="https://github.com/MyYuvii/Jam-Digital" target="_blank" class="text-center text-base font-semibold text-white bg-primary py-2 px-6 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">
-                                    Lihat Detail
-                                </a>
-
-                                <a href="https://myyuvii.github.io/Jam-Digital/" target="_blank" class="text-center text-base font-semibold text-white bg-primary py-2 px-6 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">
-                                    Demo
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/Kalkulator.png" alt="Kalkulator" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Kalkulator Sederhana</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify">Kalkulator sederhana yang dibuat menggunakan HTML, CSS, PHP, dan JS. Mampu mengerjakan operasi pertambahan, pengurangan, perkalian, dan pembagian.</p>
-                            <a href="https://github.com/MyYuvii/Kalkulator" target="_blank" class="text-center md:mr-52 mr-20 mt-auto text-base font-semibold text-white bg-primary py-2 px-6 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">Lihat Detail</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/etoko.png" alt="Kalkulator" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Toko Buku Online</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify">Toko buku ini dibuat dengan laravel, laravel jetstream, bootstrap, dan API stripe. Mampu melakukan add cart produk buku dan melakukan transaksi dengan stripe. Untuk admin, admin dapat menambahkan, mengubah, dan menghapus data produk. Admin juga dapat mengelola orderan kostumer, menandakan orderan mana yang sudah di delivered dan yang belum. Dan admin dapat melihat statistik jumlah kostumer serta total hasil penjualan.</p>
-                            <a href="https://github.com/MyYuvii/Online-Store---Book-Store" target="_blank" class="text-center md:mr-0 mr-20 mt-auto text-base font-semibold text-white bg-primary py-2 px-6 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">Lihat Detail</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/ukk.png" alt="ukk" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Nuxix Travel</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify">Projek tim yang terdiri dari UI/UX Designer, Backend Developer, Project Manager, dan saya sendiri sebagai <span class="text-dark font-bold">Frontend Developer.</span> Website travel ini dibuat dengan tujuan untuk memudahkan sistem finance dalam perjalanan dinas. Dilengkapi dengan fitur pengajuan, verifikasi, dan cairkan dana dalam satu tempat serta laporan keuangan secara real-time.</p>
-                            <a href="https://github.com/Farhanrafiansyah/nuxix-travel" target="_blank" class="text-center md:mr-0 mr-20 mt-auto text-base font-semibold text-white bg-primary py-2 px-6 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">Lihat Detail</a>
-                        </div>
-                    </div>
-                </div>
-
-<!-- 
-                <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h2 class="font-bold text-dark text-3xl mb-4">Passion Projects</h2>
-                    <p class="font-medium text-md text-secondary">Berikut adalah projek projek terkait passion menulis saya</p>
-                </div>
-            </div>
-
-
-            <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/etoko.png" alt="" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Shattered Crystals of Serva: The Sibling Shcism</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify"></p>
-                            <a class="inline-block px-1 py-2 text-white bg-primary rounded-full text-center font-semibold">Status: On Writing Progress</a>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/etoko.png" alt="" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Shattered Crystals of Serva: The Frozen Oath</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify"></p>
-                            <a class="inline-block px-1 py-2 text-white bg-primary rounded-full text-center font-semibold">Status: On Outlining Progress</a>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/etoko.png" alt="" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Shattered Crystals of Serva: The Reborn of The Phoenix</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify"></p>
-                            <a class="inline-block px-1 py-2 text-white bg-primary rounded-full text-center font-semibold">Status: On Planning Progress</a>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/etoko.png" alt="" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Shattered Crystals of Serva: The Sweet Ruin</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify"></p>
-                            <a class="inline-block px-1 py-2 text-white bg-primary rounded-full text-center font-semibold">Status: On Planning Progress</a>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/etoko.png" alt="" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Shattered Crystals of Serva: The Return of Serva</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify"></p>
-                            <a class="inline-block px-1 py-2 text-white bg-primary rounded-full text-center font-semibold">Status: On Planning Progress</a>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="mb-12 p-4 md:w-1/2 flex-grow">
-                    <div class="rounded-md overflow-hidden shadow-md flex flex-col h-full">
-                        <img src="dist/img/etoko.png" alt="" class="w-full hover:scale-110 transition duration-500 ease-in-out">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Shattered Crystals of Serva: The Death Upright</h3>
-                            <p class="font-medium text-base text-secondary mb-5 text-justify"></p>
-                            <a class="inline-block px-1 py-2 text-white bg-primary rounded-full text-center font-semibold">Status: On Planning Progress</a>
-                        </div>
-                    </div>
-                </div> -->
-
             </div>
         </div>
-      </section>
-    <!-- Portfolio Section End -->
+    </div>
 
     <!-- Contact Section Start -->
-     <section id="contact" class="pt-36 pb-16 mb-10">
-        <div class="mx-auto px-4 max-w-6xl">
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-lg text-primary mb-2">Kontak</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">Hubungi Saya!</h2>
-                    <p class="font-medium text-md text-secondary md:text-lg">Punya ide menarik atau peluang untuk kerja sama? Saya akan mendengarkannya dengan senang hati</p>
+    <section id="contact" class="py-24 bg-slate-50/80 border-t border-slate-200/60 relative">
+        <div class="container mx-auto px-4 max-w-6xl">
+            
+            <!-- Section Header -->
+            <div class="max-w-2xl mx-auto text-center mb-16 reveal-on-scroll">
+                <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary bg-white border border-teal-200/60 mb-3 shadow-xs">
+                    Kontak
                 </div>
+                <h2 class="font-extrabold text-dark text-3xl sm:text-4xl lg:text-5xl mb-4 tracking-tight">
+                    Hubungi Saya!
+                </h2>
+                <p class="font-normal text-base sm:text-lg text-secondary">
+                    Punya ide menarik, pertanyaan, atau peluang untuk kerja sama? Saya akan mendengarkannya dengan senang hati.
+                </p>
             </div>
 
-            <form action="https://api.web3forms.com/submit" method="POST">
-                <div class="w-full lg:w-2/3 lg:mx-auto">
-                <div class="lg:w-full px-4 mb-8">
-                    <label for="name" class="text-base font-bold text-primary">Nama</label>
-                    <input type="text" id="name" name="name" required placeholder="Bastian" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
-            </div>
-            <div class="w-full px-4 mb-8">
-                <input type="hidden" name="access_key" value="976af633-4e6c-4d2d-89b4-b9486bbff62c">
-                <label for="email" class="text-base font-bold text-primary">Email</label>
-                <input type="email" id="name" name="email" required placeholder="bastian123456@gmail.com" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
-            </div>
-            <div class="lg:w-full px-4 ">
-                <label for="message" class="text-base font-bold text-primary">Pesan</label>
-                <textarea type="text" id="message" name="message" required placeholder="I want to work with you!" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"></textarea>
-            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column: Direct Contact Info Cards (5 Cols) -->
+                <div class="lg:col-span-5 space-y-4 reveal-on-scroll">
+                    <!-- Email Copy Card -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:border-primary/50 transition duration-300">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-xl bg-teal-50 text-primary flex items-center justify-center shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Email Utama</p>
+                                <p class="text-sm sm:text-base font-bold text-dark break-all">bastianmovic725@gmail.com</p>
+                            </div>
+                        </div>
+                        <button id="copy-email-btn" type="button" class="w-full mt-2 inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-primary bg-teal-50/70 hover:bg-teal-100/70 border border-teal-200/60 py-2.5 px-4 rounded-xl transition duration-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span>Salin Alamat Email</span>
+                        </button>
+                    </div>
 
-                <p class="font-medium text-md text-slate-300 md:text-lg text-center mb-10">Tolong Jangan Spam!</p>
+                    <!-- Fast Response Indicator -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-dark">Respon Cepat</p>
+                            <p class="text-xs text-secondary mt-0.5">Biasanya membalas pesan dalam 1x24 jam kerja.</p>
+                        </div>
+                    </div>
 
-            <div class="px-4">
-                <button class="text-base font-semibold text-white bg-primary py-3 w-40 lg:w-60 lg:ml-60 ml-24 rounded-full hover:opacity-80 hover:shadow-lg transition duration-500">Kirim</button>
+                    <!-- Social Channels Strip -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm">
+                        <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-3">Saluran Sosial</p>
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.instagram.com/bas_movic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-pink-100 hover:text-pink-600 flex items-center justify-center text-slate-600 transition duration-200">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="https://github.com/MyYuvii" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-800 hover:text-white flex items-center justify-center text-slate-600 transition duration-200">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/bastian-movic-680ba7383" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-blue-100 hover:text-blue-600 flex items-center justify-center text-slate-600 transition duration-200">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Contact Form (7 Cols) -->
+                <div class="lg:col-span-7 reveal-on-scroll">
+                    <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-md">
+                        
+                        <!-- Success Alert Message (Initially Hidden) -->
+                        <div id="form-success-alert" class="hidden mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-start gap-3">
+                            <span class="text-xl">✅</span>
+                            <div>
+                                <p class="font-bold">Pesan Berhasil Terkirim!</p>
+                                <p class="text-xs sm:text-sm text-emerald-700 mt-0.5">Terima kasih telah menghubungi saya. Saya akan merespons pesan Anda secepatnya.</p>
+                            </div>
+                        </div>
+
+                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                            <!-- Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="976af633-4e6c-4d2d-89b4-b9486bbff62c">
+                            <!-- Anti-Bot Honeypot -->
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                            <!-- Input Nama -->
+                            <div>
+                                <label for="form-name" class="block text-sm font-bold text-dark mb-2">
+                                    Nama Lengkap <span class="text-primary">*</span>
+                                </label>
+                                <input type="text" id="form-name" name="name" required placeholder="Contoh: Bastian Movic" 
+                                       class="w-full bg-slate-50 text-dark px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary focus:bg-white transition duration-200 text-sm">
+                            </div>
+
+                            <!-- Input Email -->
+                            <div>
+                                <label for="form-email" class="block text-sm font-bold text-dark mb-2">
+                                    Alamat Email <span class="text-primary">*</span>
+                                </label>
+                                <input type="email" id="form-email" name="email" required placeholder="Contoh: bastian@example.com" 
+                                       class="w-full bg-slate-50 text-dark px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary focus:bg-white transition duration-200 text-sm">
+                            </div>
+
+                            <!-- Input Pesan -->
+                            <div>
+                                <label for="form-message" class="block text-sm font-bold text-dark mb-2">
+                                    Pesan / Keperluan <span class="text-primary">*</span>
+                                </label>
+                                <textarea id="form-message" name="message" rows="4" required placeholder="Tuliskan pesan, penawaran proyek, atau sapaan Anda di sini..." 
+                                          class="w-full bg-slate-50 text-dark px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary focus:bg-white transition duration-200 text-sm resize-y"></textarea>
+                            </div>
+
+                            <p class="text-xs text-slate-400">
+                                🔒 Pesan akan dikirim langsung ke inbox pribadi saya. Mohon jangan mengirim spam.
+                            </p>
+
+                            <!-- Submit Button -->
+                            <div>
+                                <button type="submit" id="form-submit-btn" 
+                                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-base font-semibold text-white bg-primary py-3.5 px-8 rounded-full shadow-lg shadow-teal-500/25 hover:bg-primary-dark hover:shadow-teal-600/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300">
+                                    <span>Kirim Pesan</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
-            </div>
-            </form>
         </div>
     </section>
     <!-- Contact Section End -->
 
     <!-- Footer Section Start -->
-    <footer class="bg-dark pt-24 pb-12">
-        <div class="mx-auto px-4 max-w-6xl">
-            <div class="flex flex-wrap">
-                <div class="w-full px-4 mb-12 text-slate-300 font-medium md:w-1/3">
-                    <h3 class="font-bold text-2xl mb-2">Hubungi Kami</h3>
-                    <p>bastianmovic725@gmail.com</p>
+    <footer class="bg-dark text-slate-300 pt-20 pb-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
+                
+                <!-- Col 1: Bio (5 cols) -->
+                <div class="md:col-span-5">
+                    <a href="#home" class="font-extrabold text-2xl text-white tracking-tight flex items-center gap-1 mb-4">
+                        Bastian<span class="text-primary">Yudistira</span>
+                    </a>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
+                        Portfolio resmi Bastian Yudistira Movic, siswa SMK Rekayasa Perangkat Lunak (RPL) dengan minat mendalam pada pengembangan Web Front-End & Full-Stack.
+                    </p>
+                    <p class="text-sm text-slate-400 flex items-center gap-2">
+                        <span class="text-primary">✉</span>
+                        <a href="mailto:bastianmovic725@gmail.com" class="hover:text-primary transition">bastianmovic725@gmail.com</a>
+                    </p>
                 </div>
-                <div class="w-full px-4 mb-12 md:w-1/3">
-                    <h3 class="font-semibold text-x; text-white mb-5">Tautan</h3>
-                    <ul class="text-slate-300">
+
+                <!-- Col 2: Navigation Links (3 cols) -->
+                <div class="md:col-span-3">
+                    <h4 class="font-bold text-white text-base mb-4 tracking-wide uppercase text-xs">
+                        Navigasi Cepat
+                    </h4>
+                    <ul class="space-y-2.5 text-sm">
                         <li>
-                            <a href="#home" class="inline-block text-base hover:text-primary mb-3">Beranda</a>
+                            <a href="#home" class="hover:text-primary transition duration-200">Beranda</a>
                         </li>
                         <li>
-                            <a href="#about" class="inline-block text-base hover:text-primary mb-3">Tentang</a>
+                            <a href="#about" class="hover:text-primary transition duration-200">Tentang</a>
                         </li>
                         <li>
-                            <a href="#portfolio" class="inline-block text-base hover:text-primary mb-3">Portofolio</a>
+                            <a href="#portfolio" class="hover:text-primary transition duration-200">Portofolio</a>
                         </li>
                         <li>
-                            <a href="#contact" class="inline-block text-base hover:text-primary mb-3">Kontak</a>
+                            <a href="#skills" class="hover:text-primary transition duration-200">Keahlian</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="hover:text-primary transition duration-200">Kontak</a>
                         </li>
                     </ul>
                 </div>
 
-                <div class="w-full px-4 mb-12 md:w-1/3">
-                    <h3 class="font-semibold text-x; text-white mb-5">Sosial Media</h3>
-                    <ul class="text-slate-300">
+                <!-- Col 3: Social Media (4 cols) -->
+                <div class="md:col-span-4">
+                    <h4 class="font-bold text-white text-base mb-4 tracking-wide uppercase text-xs">
+                        Koneksi & Sosial Media
+                    </h4>
+                    <ul class="space-y-2.5 text-sm">
                         <li>
-                            <a href="https://www.instagram.com/bas_movic/" class="inline-block text-base hover:text-primary mb-3" target="_blank">Instagram</a>
-                             <!-- <a href="#home" class="inline-block text-base hover:text-primary mb-3"></a> -->
-                        </li>
-                        <!-- <li>
-                            
-                             <a href=" https://www.tiktok.com/@mybuu_5" class="inline-block text-base hover:text-primary mb-3" target="_blank">Tiktok</a>
-                        </li> -->
-                        <li>
-                            <a href="https://github.com/MyYuvii" class="inline-block text-base hover:text-primary mb-3" target="_blank">Github</a>
+                            <a href="https://www.instagram.com/bas_movic/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-200 inline-flex items-center gap-2">
+                                <span>Instagram</span>
+                                <span class="text-xs text-slate-500">(@bas_movic)</span>
+                            </a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/bastian-movic-680ba7383" class="inline-block text-base hover:text-primary mb-3" target="_blank">LinkedIn</a>
+                            <a href="https://github.com/MyYuvii" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-200 inline-flex items-center gap-2">
+                                <span>GitHub</span>
+                                <span class="text-xs text-slate-500">(@MyYuvii)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/bastian-movic-680ba7383" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition duration-200 inline-flex items-center gap-2">
+                                <span>LinkedIn</span>
+                                <span class="text-xs text-slate-500">(Bastian Movic)</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
+
             </div>
 
-
-            <div class="w-full pt-10 border-t border-slate-700">
-                <p class="font-medium text-sm text-slate-500 text-center">Website ini dibuat menggunakan Tailwind CSS<br> &copy; 2025 Bastian Yudistira Movic. All Rights Reserved.</p>
+            <!-- Copyright Line -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>
+                    &copy; 2025 Bastian Yudistira Movic. All Rights Reserved.
+                </p>
+                <p class="flex items-center gap-1">
+                    Dibuat dengan <span class="text-primary font-semibold">Tailwind CSS</span> & <span class="text-primary font-semibold">Vanilla JS</span>
+                </p>
             </div>
         </div>
     </footer>
     <!-- Footer Section End -->
 
+    <!-- Floating Back to Top Button -->
+    <button id="back-to-top" type="button" aria-label="Kembali ke atas" 
+            class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-primary text-white shadow-lg shadow-teal-500/30 flex items-center justify-center hover:bg-primary-dark hover:-translate-y-1 active:translate-y-0 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 focus:outline-none">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"></path></svg>
+    </button>
 
-    <!-- JavaScript -->
+    <!-- Floating Toast Notification -->
+    <div id="toast-notification" 
+         class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-dark/95 backdrop-blur-md text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full shadow-2xl border border-slate-700/80 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 flex items-center gap-2">
+        <span class="text-primary">✓</span>
+        <span id="toast-message">Notifikasi</span>
+    </div>
+
+    <!-- Interactive JavaScript -->
     <script src="dist/js/script.js"></script>
 </body>
 </html>

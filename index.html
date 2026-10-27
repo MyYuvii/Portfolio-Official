@@ -14,34 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                container: {
-                    center: true,
-                    padding: '16px',
-                },
-                extend: {
-                    colors: {
-                        primary: '#14b8a6',
-                        'primary-dark': '#0d9488',
-                        'primary-light': '#ccfbf1',
-                        dark: '#0f172a',
-                        secondary: '#64748b',
-                        putih: '#ffffff',
-                    },
-                    screens: {
-                        '2xl': '1320px',
-                    }
-                },
-            },
-        }
-    </script>
-
-    <!-- Precompiled Tailwind CSS -->
-    <link rel="stylesheet" href="dist/output.css">
+    <!-- Precompiled Tailwind CSS with cache-busting -->
+    <link rel="stylesheet" href="dist/output.css?v=2.2">
 
     <style>
         body {
@@ -168,7 +142,7 @@
                 <!-- Navigation & Hamburger -->
                 <div class="flex items-center px-4">
                     <!-- Hamburger Button (Mobile) -->
-                    <button id="hamburger" onclick="toggleMobileNav()" name="hamburger" type="button" aria-label="Toggle Navigation Menu" class="block lg:hidden p-2 rounded-xl hover:bg-slate-100 transition focus:outline-none">
+                    <button id="hamburger" onclick="toggleMobileNav(false, event)" name="hamburger" type="button" aria-label="Toggle Navigation Menu" class="block lg:hidden p-2 rounded-xl hover:bg-slate-100 transition focus:outline-none">
                         <span class="hamburger my-1.5 block bg-dark transition duration-300 ease-in-out origin-center"></span>
                         <span class="hamburger my-1.5 block bg-dark transition duration-300 ease-in-out origin-center"></span>
                         <span class="hamburger my-1.5 block bg-dark transition duration-300 ease-in-out origin-center"></span>
@@ -1358,7 +1332,7 @@
         <span id="toast-message">Notifikasi</span>
     </div>
 
-    <!-- Interactive JavaScript -->
-    <script src="dist/js/script.js"></script>
+    <!-- Interactive JavaScript with cache-busting -->
+    <script src="dist/js/script.js?v=2.2"></script>
 </body>
 </html>

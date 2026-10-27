@@ -379,7 +379,19 @@ window.closeProjectModal = function() {
 };
 
 // Global toggle for Mobile Navigation Menu
-window.toggleMobileNav = function(forceClose = false) {
+let lastNavToggleTime = 0;
+window.toggleMobileNav = function(forceClose = false, e = null) {
+    if (e && e.stopPropagation) {
+        e.stopPropagation();
+    }
+
+    const now = Date.now();
+    // Debounce to prevent rapid double-clicks or dual-event triggers on mobile touch screens
+    if (!forceClose && now - lastNavToggleTime < 250) {
+        return;
+    }
+    lastNavToggleTime = now;
+
     const hamburger = document.querySelector('#hamburger');
     const navMenu = document.querySelector('#nav-menu');
     const navBackdrop = document.querySelector('#nav-backdrop');
@@ -515,10 +527,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 3. HAMBURGER MENU & MOBILE NAVIGATION ---
-    if (hamburger) {
+    if (hamburger && !hamburger.hasAttribute('onclick')) {
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
-            window.toggleMobileNav();
+            window.toggleMobileNav(false, e);
         });
     }
 
@@ -591,29 +603,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 5. SKILLS FILTER EVENT LISTENERS ---
     const skillFilters = document.querySelectorAll('.skill-filter-btn');
     skillFilters.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const filterVal = btn.getAttribute('data-filter');
-            window.filterSkills(filterVal);
-        });
+        if (!btn.hasAttribute('onclick')) {
+            btn.addEventListener('click', () => {
+                const filterVal = btn.getAttribute('data-filter');
+                window.filterSkills(filterVal);
+            });
+        }
     });
 
     // --- 6. PORTFOLIO FILTER EVENT LISTENERS ---
     const portFilters = document.querySelectorAll('.portfolio-filter-btn');
     portFilters.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const filterVal = btn.getAttribute('data-filter');
-            window.filterPortfolio(filterVal);
-        });
+        if (!btn.hasAttribute('onclick')) {
+            btn.addEventListener('click', () => {
+                const filterVal = btn.getAttribute('data-filter');
+                window.filterPortfolio(filterVal);
+            });
+        }
     });
 
     // --- 7. PORTFOLIO MODAL EVENT LISTENERS ---
     const detailButtons = document.querySelectorAll('.open-detail-btn');
     detailButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const id = btn.getAttribute('data-project');
-            window.openProjectModal(id);
-        });
+        if (!btn.hasAttribute('onclick')) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = btn.getAttribute('data-project');
+                window.openProjectModal(id);
+            });
+        }
     });
 
     const modalClose = document.getElementById('modal-close');

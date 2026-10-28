@@ -27,7 +27,7 @@ const projectData = {
             'Antarmuka bersih dan mudah digunakan',
             'Integrasi database MySQL yang terstruktur'
         ],
-        tech: ['PHP Native', 'MySQL', 'Bootstrap', 'HTML5 & CSS3'],
+        tech: ['Laravel', 'MySQL', 'Bootstrap'],
         github: 'https://github.com/MyYuvii/Perpustakaan',
         demo: null
     },
@@ -113,10 +113,13 @@ const projectData = {
         title: 'Nuxix Travel (Sistem Keuangan Perjalanan)',
         badge: 'Team Collaboration Project',
         images: [
-            { src: 'dist/img/ukk.png', caption: 'Dashboard Finansial Perjalanan Dinas' }
-            // Tambahkan screenshot modul lainnya di sini jika ada
+            { src: 'dist/img/ukk.png', caption: 'Dashboard Karyawan Perjalanan Dinas' },
+            { src: 'dist/img/ukk-atasan.png', caption: 'Dashboard Atasan Perjalanan Dinas' },
+            { src: 'dist/img/ukk-keuangan.png', caption: 'Dashboard Finansial Perjalanan Dinas dari Tim Keuangan ' },
+            { src: 'dist/img/ukk-travel.png', caption: 'Dashboard Admin Travel Perjalanan Dinas' },
+            { src: 'dist/img/ukk-admin.png', caption: 'Dashboard Super Admin Perjalanan Dinas' }
         ],
-        image: 'dist/img/ukk.png',
+        image: 'dist/img/ukk-login.png',
         desc: 'Proyek kolaborasi tim yang dirancang untuk mempermudah alur administrasi dan pelaporan keuangan perjalanan dinas instansi/perusahaan secara transparan dan akuntabel. Di sini saya berperan sebagai Frontend Developer.',
         features: [
             'Alur pengajuan, verifikasi dokumen, hingga pencairan dana perjalanan dalam satu sistem',

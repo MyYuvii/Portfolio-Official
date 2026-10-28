@@ -127,7 +127,7 @@ const projectData = {
             'Desain UI/UX modern dan responsif untuk berbagai tingkatan staf/manajer',
             'Kolaborasi tim lintas divisi (Project Manager, UI/UX Designer, Backend, dan Frontend Developer)'
         ],
-        tech: ['Laravel', 'Blade & Tailwind/CSS', 'JavaScript', 'MySQL', 'Team Git Workflow'],
+        tech: ['Vue.js', 'Tailwind/CSS', 'Typescript', 'Team Git Workflow'],
         github: 'https://github.com/Farhanrafiansyah/nuxix-travel',
         demo: null
     }
@@ -338,7 +338,7 @@ window.openProjectModal = function(projectId) {
     techContainer.innerHTML = '';
     data.tech.forEach(t => {
         const span = document.createElement('span');
-        span.className = 'px-3 py-1 text-xs font-semibold rounded-full bg-teal-50 text-primary border border-teal-200/80';
+        span.className = 'px-3 py-1 text-xs font-mono font-medium rounded-full bg-teal-50 text-primary border border-teal-200/80';
         span.textContent = t;
         techContainer.appendChild(span);
     });
@@ -568,7 +568,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const words = [
             "Junior Web Developer",
             "Front-End Enthusiast",
-            "Software Engineering Student"
         ];
         let wordIndex = 0;
         let charIndex = 0;

@@ -9,18 +9,22 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="dist/img/portfolio-website.png">
 
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Plus Jakarta Sans (Headings), Inter (Body), JetBrains Mono (Tech Badges) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Precompiled Tailwind CSS with cache-busting -->
-    <link rel="stylesheet" href="dist/output.css?v=2.2">
+    <link rel="stylesheet" href="dist/output.css?v=2.3">
 
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         /* Frosted Glass Navbar */
@@ -218,32 +222,38 @@
                 <!-- Hero Left Content -->
                 <div class="w-full self-center px-4 lg:w-1/2 reveal-on-scroll">
                     <!-- Live Status Badge -->
-                   
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-100/90 border border-slate-200/90 text-slate-700 text-xs font-medium mb-5 shadow-2xs backdrop-blur-xs">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span class="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-600">Terbuka untuk Magang & Projek nyata</span>
+                    </div>
 
-                    <h1 class="text-base font-semibold text-primary md:text-xl">
+                    <h1 class="text-base font-semibold text-primary md:text-xl font-heading">
                         Halo Semua! Saya 
-                        <span class="block font-extrabold text-dark text-4xl sm:text-5xl lg:text-5xl mt-2 tracking-tight leading-tight">
+                        <span class="block font-extrabold text-dark text-4xl sm:text-5xl lg:text-5xl mt-2 tracking-tight leading-tight font-heading">
                             Bastian Yudistira Movic <span class="inline-block hover:rotate-12 transition-transform duration-300 cursor-pointer">👋</span>
                         </span>
                     </h1>
 
                     <!-- Dynamic Subtitle with Typewriter -->
-                    <div class="font-medium text-slate-600 text-lg sm:text-xl lg:text-2xl mt-3 mb-6 flex items-center min-h-[36px]">
+                    <div class="font-medium text-slate-600 text-lg sm:text-xl lg:text-2xl mt-3 mb-6 flex items-center min-h-[36px] font-heading">
                         <span id="typewriter-text" class="text-primary font-semibold"></span>
                         <span class="inline-block w-[3px] h-6 bg-primary ml-1.5 animate-pulse"></span>
                     </div>
 
-                    <p class="font-normal text-secondary mb-8 leading-relaxed text-base sm:text-lg max-w-xl text-justify">
+                    <p class="font-normal text-slate-600 mb-8 leading-relaxed text-base sm:text-lg max-w-xl text-left">
                         Saya adalah siswa SMK jurusan <span class="text-dark font-semibold">Rekayasa Perangkat Lunak (RPL)</span> dengan kemampuan dasar Full-Stack Development yang lebih berfokus pada pengembangan Front-End modern, responsif, dan interaktif.
                     </p>
 
                     <!-- Call To Action Buttons -->
                     <div class="flex flex-wrap items-center gap-4">
-                        <a href="#contact" class="inline-flex items-center gap-2 text-base font-semibold text-white bg-primary py-3.5 px-8 rounded-full shadow-lg shadow-teal-500/25 hover:bg-primary-dark hover:shadow-teal-600/30 hover:-translate-y-0.5 transition-all duration-300 ease-in-out">
+                        <a href="#contact" class="inline-flex items-center gap-2 text-base font-semibold text-white bg-primary py-3.5 px-8 rounded-full shadow-lg shadow-teal-500/25 hover:bg-primary-dark hover:shadow-teal-600/30 hover:-translate-y-0.5 transition-all duration-300 ease-in-out font-heading">
                             Hubungi Saya
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
-                        <a href="#portfolio" class="inline-flex items-center gap-2 text-base font-semibold text-slate-700 bg-white border border-slate-300 py-3.5 px-7 rounded-full hover:border-primary hover:text-primary hover:bg-teal-50/50 hover:-translate-y-0.5 transition-all duration-300 ease-in-out">
+                        <a href="#portfolio" class="inline-flex items-center gap-2 text-base font-semibold text-slate-700 bg-white border border-slate-300 py-3.5 px-7 rounded-full hover:border-primary hover:text-primary hover:bg-teal-50/50 hover:-translate-y-0.5 transition-all duration-300 ease-in-out font-heading">
                             Lihat Portofolio
                         </a>
                     </div>
@@ -255,38 +265,38 @@
                         <div class="relative max-w-[320px] sm:max-w-md w-full">
                             
                             <!-- Floating Badge 1: HTML & CSS (Top-Left) -->
-                            <div class="absolute -top-3 -left-3 sm:-left-6 bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-slow">
+                            <div class="absolute -top-3 -left-3 sm:-left-6 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-slow">
                                 <span class="text-lg sm:text-xl">⚡</span>
                                 <div>
-                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Frontend</p>
-                                    <p class="text-xs sm:text-sm font-bold text-dark">HTML, CSS & Vue.js</p>
+                                    <p class="text-[10px] font-mono text-slate-400 font-medium uppercase tracking-wider">Frontend</p>
+                                    <p class="text-xs sm:text-sm font-bold text-dark font-heading">HTML, CSS & Vue.js</p>
                                 </div>
                             </div>
 
                             <!-- Floating Badge 2: PHP & Laravel (Top-Right) -->
-                            <div class="absolute top-8 -right-3 sm:-right-6 bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-delayed">
+                            <div class="absolute top-8 -right-3 sm:-right-6 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-delayed">
                                 <span class="text-lg sm:text-xl">🐘</span>
                                 <div>
-                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Backend</p>
-                                    <p class="text-xs sm:text-sm font-bold text-dark">PHP & Laravel</p>
+                                    <p class="text-[10px] font-mono text-slate-400 font-medium uppercase tracking-wider">Backend</p>
+                                    <p class="text-xs sm:text-sm font-bold text-dark font-heading">PHP & Laravel</p>
                                 </div>
                             </div>
 
                             <!-- Floating Badge 3: JavaScript (Bottom-Left) -->
-                            <div class="absolute bottom-12 -left-2 sm:-left-4 bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-delayed">
+                            <div class="absolute bottom-12 -left-2 sm:-left-4 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-delayed">
                                 <span class="text-lg sm:text-xl">⚛️</span>
                                 <div>
-                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Interactive</p>
-                                    <p class="text-xs sm:text-sm font-bold text-dark">JavaScript</p>
+                                    <p class="text-[10px] font-mono text-slate-400 font-medium uppercase tracking-wider">Interactive</p>
+                                    <p class="text-xs sm:text-sm font-bold text-dark font-heading">JavaScript</p>
                                 </div>
                             </div>
 
                             <!-- Floating Badge 4: Tailwind CSS (Bottom-Right) -->
-                            <div class="absolute -bottom-2 right-4 bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-slow">
+                            <div class="absolute -bottom-2 right-4 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg shadow-slate-200/50 rounded-2xl p-2.5 sm:p-3 flex items-center gap-2.5 z-20 animate-float-slow">
                                 <span class="text-lg sm:text-xl">🎨</span>
                                 <div>
-                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Styling</p>
-                                    <p class="text-xs sm:text-sm font-bold text-dark">Tailwind CSS</p>
+                                    <p class="text-[10px] font-mono text-slate-400 font-medium uppercase tracking-wider">Styling</p>
+                                    <p class="text-xs sm:text-sm font-bold text-dark font-heading">Tailwind CSS</p>
                                 </div>
                             </div>
 
@@ -317,37 +327,41 @@
                 
                 <!-- Left Column: Story & Quick Info -->
                 <div class="w-full px-4 mb-12 lg:mb-0 lg:w-7/12 reveal-on-scroll">
-                    <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-primary bg-teal-50 border border-teal-200/60 mb-3">
+                    <div class="inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase tracking-wider text-primary bg-teal-50 border border-teal-200/60 mb-3">
                         Tentang Saya
                     </div>
-                    <h2 class="font-extrabold text-dark text-3xl sm:text-4xl mb-6 tracking-tight">
+                    <h2 class="font-extrabold text-dark text-3xl sm:text-4xl mb-6 tracking-tight font-heading">
                         Yuk, Kenalan sama Bastian!
                     </h2>
-                    <p class="font-normal text-base sm:text-lg text-secondary leading-relaxed mb-6 mr-4 text-justify">
+                    <p class="font-normal text-base sm:text-lg text-slate-600 leading-relaxed mb-6 mr-4 text-left">
                         Saya mengerjakan frontend dan backend menggunakan HTML, CSS, JavaScript, PHP, dan Laravel. Saya familiar dalam membuat sistem CRUD dan mengelola database MySQL. Untuk tampilan, saya sering memakai template dan UI framework agar hasil cepat, konsisten, dan rapi. Saat ini saya terus memperdalam Tailwind CSS dan ekosistem framework modern lainnya.
                     </p>
 
-                    <!-- Highlight Highlights Cards -->
-                    <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-6">
-                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm hover:border-primary/50 transition duration-300">
-                            <span class="text-2xl mb-2 block">🎓</span>
-                            <h4 class="font-bold text-dark text-sm sm:text-base">Pendidikan</h4>
-                            <p class="text-xs sm:text-sm text-secondary">SMK Rekayasa Perangkat Lunak</p>
+                    <!-- Highlight Cards (4 Key Metrics/Facts) -->
+                    <div class="grid grid-cols-2 gap-3.5 sm:gap-4 mt-6">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-300 group">
+                            <div class="w-9 h-9 rounded-lg bg-teal-50 text-lg flex items-center justify-center mb-2.5 group-hover:scale-110 transition duration-200">🎓</div>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">Pendidikan</span>
+                            <h4 class="font-bold text-dark text-sm sm:text-base font-heading">SMK RPL</h4>
+                            <p class="text-xs text-secondary mt-0.5">Rekayasa Perangkat Lunak</p>
                         </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm hover:border-primary/50 transition duration-300">
-                            <span class="text-2xl mb-2 block">💻</span>
-                            <h4 class="font-bold text-dark text-sm sm:text-base">Fokus Utama</h4>
-                            <p class="text-xs sm:text-sm text-secondary">Front-End & Dasar Full-Stack</p>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-300 group">
+                            <div class="w-9 h-9 rounded-lg bg-teal-50 text-lg flex items-center justify-center mb-2.5 group-hover:scale-110 transition duration-200">💻</div>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">Fokus Utama</span>
+                            <h4 class="font-bold text-dark text-sm sm:text-base font-heading">Front-End Dev</h4>
+                            <p class="text-xs text-secondary mt-0.5">& Dasar Full-Stack</p>
                         </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm hover:border-primary/50 transition duration-300">
-                            <span class="text-2xl mb-2 block">🚀</span>
-                            <h4 class="font-bold text-dark text-sm sm:text-base">Keahlian Praktis</h4>
-                            <p class="text-xs sm:text-sm text-secondary">CRUD, REST API, Web Responsive</p>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-300 group">
+                            <div class="w-9 h-9 rounded-lg bg-teal-50 text-lg flex items-center justify-center mb-2.5 group-hover:scale-110 transition duration-200">🚀</div>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">Keahlian</span>
+                            <h4 class="font-bold text-dark text-sm sm:text-base font-heading">CRUD & Web Apps</h4>
+                            <p class="text-xs text-secondary mt-0.5">REST API & Responsive UI</p>
                         </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm hover:border-primary/50 transition duration-300">
-                            <span class="text-2xl mb-2 block">📍</span>
-                            <h4 class="font-bold text-dark text-sm sm:text-base">Lokasi</h4>
-                            <p class="text-xs sm:text-sm text-secondary">Indonesia</p>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-300 group">
+                            <div class="w-9 h-9 rounded-lg bg-teal-50 text-lg flex items-center justify-center mb-2.5 group-hover:scale-110 transition duration-200">📍</div>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">Domisili</span>
+                            <h4 class="font-bold text-dark text-sm sm:text-base font-heading">Indonesia</h4>
+                            <p class="text-xs text-secondary mt-0.5">WIB (UTC+7)</p>
                         </div>
                     </div>
                 </div>
@@ -355,8 +369,8 @@
                 <!-- Right Column: Social Connection Cards -->
                 <div class="w-full px-4 lg:w-5/12 reveal-on-scroll">
                     <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-md">
-                        <h3 class="font-bold text-dark mb-2 text-2xl">Mari Berteman</h3>
-                        <p class="font-normal text-sm sm:text-base text-secondary mb-6 leading-relaxed text-justify">
+                        <h3 class="font-bold text-dark mb-2 text-2xl font-heading">Mari Berteman</h3>
+                        <p class="font-normal text-sm sm:text-base text-slate-600 mb-6 leading-relaxed text-left">
                             Saya aktif di sejumlah kanal media sosial dan terbuka untuk koneksi profesional maupun diskusi projek.
                         </p>
 
@@ -370,7 +384,7 @@
                                     </div>
                                     <div>
                                         <p class="text-xs text-slate-400">Instagram</p>
-                                        <p class="text-sm font-semibold text-dark">@bas_movic</p>
+                                        <p class="text-sm font-semibold font-mono text-dark">@bas_movic</p>
                                     </div>
                                 </div>
                                 <span class="text-slate-400 group-hover:text-pink-500 group-hover:translate-x-1 transition duration-300">
@@ -387,7 +401,7 @@
                                     </div>
                                     <div>
                                         <p class="text-xs text-slate-400">GitHub</p>
-                                        <p class="text-sm font-semibold text-dark">@MyYuvii</p>
+                                        <p class="text-sm font-semibold font-mono text-dark">@MyYuvii</p>
                                     </div>
                                 </div>
                                 <span class="text-slate-400 group-hover:text-dark group-hover:translate-x-1 transition duration-300">
@@ -404,7 +418,7 @@
                                     </div>
                                     <div>
                                         <p class="text-xs text-slate-400">LinkedIn</p>
-                                        <p class="text-sm font-semibold text-dark">Bastian Movic</p>
+                                        <p class="text-sm font-semibold font-mono text-dark">Bastian Movic</p>
                                     </div>
                                 </div>
                                 <span class="text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition duration-300">
@@ -436,20 +450,32 @@
                         <span class="text-xs sm:text-sm font-semibold text-dark">JavaScript</span>
                     </div>
                     <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <img src="dist/img/vue.png" alt="Vue.js" class="w-6 h-6 object-contain">
+                        <span class="text-xs sm:text-sm font-semibold text-dark">Vue.js</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <img src="dist/img/tailwind.png" alt="Tailwind CSS" class="w-6 h-6 object-contain">
+                        <span class="text-xs sm:text-sm font-semibold text-dark">Tailwind CSS</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
                         <img src="dist/img/php.png" alt="PHP" class="w-6 h-6 object-contain">
                         <span class="text-xs sm:text-sm font-semibold text-dark">PHP</span>
                     </div>
                     <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
-                        <span class="text-sm font-bold text-teal-500">#</span>
-                        <span class="text-xs sm:text-sm font-semibold text-dark">Tailwind CSS</span>
-                    </div>
-                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
-                        <span class="text-sm font-bold text-red-500">◈</span>
+                        <img src="dist/img/laravel.png" alt="Laravel" class="w-6 h-6 object-contain">
                         <span class="text-xs sm:text-sm font-semibold text-dark">Laravel</span>
                     </div>
                     <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
-                        <span class="text-sm font-bold text-sky-600">⛁</span>
+                        <img src="dist/img/mysql.png" alt="MySQL" class="w-6 h-6 object-contain">
                         <span class="text-xs sm:text-sm font-semibold text-dark">MySQL</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <img src="dist/img/git.png" alt="Git" class="w-6 h-6 object-contain">
+                        <span class="text-xs sm:text-sm font-semibold text-dark">Git</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 px-4 py-2 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:border-primary hover:-translate-y-0.5 transition duration-300">
+                        <img src="dist/img/github.png" alt="GitHub" class="w-6 h-6 object-contain">
+                        <span class="text-xs sm:text-sm font-semibold text-dark">GitHub</span>
                     </div>
                 </div>
             </div>
@@ -478,16 +504,16 @@
             <!-- Interactive Portfolio Category Filter Tabs -->
             <div class="flex justify-center items-center gap-3 mb-12 flex-wrap">
                 <button type="button" data-filter="all" onclick="filterPortfolio('all')" class="portfolio-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-primary text-white shadow-md shadow-teal-500/25">
-                    Semua Projek (6)
+                    Semua Projek <span class="font-mono text-xs opacity-80">(6)</span>
                 </button>
                 <button type="button" data-filter="webapp" onclick="filterPortfolio('webapp')" class="portfolio-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
-                    Web Application (3)
+                    Web Application <span class="font-mono text-xs opacity-80">(3)</span>
                 </button>
                 <button type="button" data-filter="tools" onclick="filterPortfolio('tools')" class="portfolio-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
-                    Mini Tools (2)
+                    Mini Tools <span class="font-mono text-xs opacity-80">(2)</span>
                 </button>
                 <button type="button" data-filter="game" onclick="filterPortfolio('game')" class="portfolio-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
-                    Python Game (1)
+                    Python Game <span class="font-mono text-xs opacity-80">(1)</span>
                 </button>
             </div>
 
@@ -500,7 +526,7 @@
                         <!-- Project Image Container with Zoom -->
                         <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
                             <img src="dist/img/crud.png" alt="Sistem Informasi Perpustakaan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
-                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                            <span class="absolute top-3 left-3 bg-dark/85 backdrop-blur-md text-white text-[10px] font-mono font-medium px-2.5 py-1 rounded-full border border-white/10 shadow-xs">
                                 Web Application
                             </span>
                         </div>
@@ -508,15 +534,15 @@
                         <div class="p-6">
                             <!-- Tech Badges -->
                             <div class="flex flex-wrap gap-1.5 mb-3">
-                                <span class="text-[11px] font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">Laravel</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">MySQL</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Bootstrap</span>
+                                <span class="text-[11px] font-mono font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">PHP Native</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">MySQL</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Bootstrap</span>
                             </div>
 
-                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors font-heading">
                                 Perpustakaan
                             </h3>
-                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                            <p class="font-normal text-sm text-slate-500 leading-relaxed line-clamp-3 text-left">
                                 Website perpustakaan sederhana. Pengunjung hanya dapat melihat daftar buku, sedangkan admin dapat membuat, mengubah, maupun menghapus data buku secara terstruktur.
                             </p>
                         </div>
@@ -524,7 +550,7 @@
 
                     <!-- Action Buttons -->
                     <div class="p-6 pt-0 flex items-center gap-3">
-                        <button type="button" data-project="perpustakaan" onclick="openProjectModal('perpustakaan')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                        <button type="button" data-project="perpustakaan" onclick="openProjectModal('perpustakaan')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200 font-heading">
                             Lihat Detail
                         </button>
                         <a href="https://github.com/MyYuvii/Perpustakaan" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
@@ -538,29 +564,29 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
                             <img src="dist/img/pythongame.png" alt="Number Guesser Game" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
-                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                            <span class="absolute top-3 left-3 bg-dark/85 backdrop-blur-md text-white text-[10px] font-mono font-medium px-2.5 py-1 rounded-full border border-white/10 shadow-xs">
                                 Python Game
                             </span>
                         </div>
 
                         <div class="p-6">
                             <div class="flex flex-wrap gap-1.5 mb-3">
-                                <span class="text-[11px] font-medium bg-amber-50 text-amber-700 px-2.5 py-0.5 rounded-md border border-amber-200/60">Python</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Logic Algorithm</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CLI</span>
+                                <span class="text-[11px] font-mono font-medium bg-amber-50 text-amber-700 px-2.5 py-0.5 rounded-md border border-amber-200/60">Python</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Algorithm</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CLI</span>
                             </div>
 
-                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors font-heading">
                                 Number Guesser Game
                             </h3>
-                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                            <p class="font-normal text-sm text-slate-500 leading-relaxed line-clamp-3 text-left">
                                 Game python sederhana yang mengharuskan pemain menebak angka acak dari 1 sampai 1.000 dengan sesedikit mungkin jumlah percobaan berdasarkan petunjuk sistem.
                             </p>
                         </div>
                     </div>
 
                     <div class="p-6 pt-0 flex items-center gap-3">
-                        <button type="button" data-project="number-guesser" onclick="openProjectModal('number-guesser')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                        <button type="button" data-project="number-guesser" onclick="openProjectModal('number-guesser')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200 font-heading">
                             Lihat Detail
                         </button>
                         <a href="https://github.com/MyYuvii/Game-Tebak-Angka" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
@@ -574,32 +600,32 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
                             <img src="dist/img/Jam.png" alt="Jam Digital" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
-                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                            <span class="absolute top-3 left-3 bg-dark/85 backdrop-blur-md text-white text-[10px] font-mono font-medium px-2.5 py-1 rounded-full border border-white/10 shadow-xs">
                                 Interactive Tool
                             </span>
                         </div>
 
                         <div class="p-6">
                             <div class="flex flex-wrap gap-1.5 mb-3">
-                                <span class="text-[11px] font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">HTML5</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CSS3</span>
-                                <span class="text-[11px] font-medium bg-yellow-50 text-yellow-700 px-2.5 py-0.5 rounded-md border border-yellow-200/60">JavaScript</span>
+                                <span class="text-[11px] font-mono font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">HTML5</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CSS3</span>
+                                <span class="text-[11px] font-mono font-medium bg-yellow-50 text-yellow-700 px-2.5 py-0.5 rounded-md border border-yellow-200/60">JavaScript</span>
                             </div>
 
-                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors font-heading">
                                 Jam Digital
                             </h3>
-                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                            <p class="font-normal text-sm text-slate-500 leading-relaxed line-clamp-3 text-left">
                                 Jam digital berbasis web dengan pembaruan waktu real-time, format jam digital yang presisi, serta desain minimalis dan adaptif.
                             </p>
                         </div>
                     </div>
 
                     <div class="p-6 pt-0 flex items-center gap-2">
-                        <button type="button" data-project="jam-digital" onclick="openProjectModal('jam-digital')" class="open-detail-btn flex-1 text-center text-xs sm:text-sm font-semibold text-white bg-primary py-2.5 px-3 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                        <button type="button" data-project="jam-digital" onclick="openProjectModal('jam-digital')" class="open-detail-btn flex-1 text-center text-xs sm:text-sm font-semibold text-white bg-primary py-2.5 px-3 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200 font-heading">
                             Detail
                         </button>
-                        <a href="https://myyuvii.github.io/Jam-Digital/" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-teal-700 bg-teal-50 border border-teal-200/80 py-2.5 px-3 rounded-xl hover:bg-teal-100/70 transition duration-200 flex items-center gap-1">
+                        <a href="https://myyuvii.github.io/Jam-Digital/" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-teal-700 bg-teal-50 border border-teal-200/80 py-2.5 px-3 rounded-xl hover:bg-teal-100/70 transition duration-200 flex items-center gap-1 font-heading">
                             Demo
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
@@ -614,29 +640,29 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
                             <img src="dist/img/Kalkulator.png" alt="Kalkulator Sederhana" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
-                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                            <span class="absolute top-3 left-3 bg-dark/85 backdrop-blur-md text-white text-[10px] font-mono font-medium px-2.5 py-1 rounded-full border border-white/10 shadow-xs">
                                 Calculator Tool
                             </span>
                         </div>
 
                         <div class="p-6">
                             <div class="flex flex-wrap gap-1.5 mb-3">
-                                <span class="text-[11px] font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">PHP</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">JavaScript</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CSS3</span>
+                                <span class="text-[11px] font-mono font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">PHP</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">JavaScript</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">CSS3</span>
                             </div>
 
-                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors font-heading">
                                 Kalkulator Sederhana
                             </h3>
-                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                            <p class="font-normal text-sm text-slate-500 leading-relaxed line-clamp-3 text-left">
                                 Kalkulator web yang memproses kalkulasi penjumlahan, pengurangan, perkalian, dan pembagian secara cepat dan akurat.
                             </p>
                         </div>
                     </div>
 
                     <div class="p-6 pt-0 flex items-center gap-3">
-                        <button type="button" data-project="kalkulator" onclick="openProjectModal('kalkulator')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                        <button type="button" data-project="kalkulator" onclick="openProjectModal('kalkulator')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200 font-heading">
                             Lihat Detail
                         </button>
                         <a href="https://github.com/MyYuvii/Kalkulator" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
@@ -650,29 +676,29 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
                             <img src="dist/img/etoko.png" alt="Toko Buku Online" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
-                            <span class="absolute top-3 left-3 bg-dark/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                            <span class="absolute top-3 left-3 bg-dark/85 backdrop-blur-md text-white text-[10px] font-mono font-medium px-2.5 py-1 rounded-full border border-white/10 shadow-xs">
                                 E-Commerce Fullstack
                             </span>
                         </div>
 
                         <div class="p-6">
                             <div class="flex flex-wrap gap-1.5 mb-3">
-                                <span class="text-[11px] font-medium bg-red-50 text-red-600 px-2.5 py-0.5 rounded-md border border-red-200/60">Laravel</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Jetstream</span>
-                                <span class="text-[11px] font-medium bg-indigo-50 text-indigo-600 px-2.5 py-0.5 rounded-md border border-indigo-200/60">Stripe API</span>
+                                <span class="text-[11px] font-mono font-medium bg-red-50 text-red-600 px-2.5 py-0.5 rounded-md border border-red-200/60">Laravel</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Jetstream</span>
+                                <span class="text-[11px] font-mono font-medium bg-indigo-50 text-indigo-600 px-2.5 py-0.5 rounded-md border border-indigo-200/60">Stripe API</span>
                             </div>
 
-                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors font-heading">
                                 Toko Buku Online
                             </h3>
-                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                            <p class="font-normal text-sm text-slate-500 leading-relaxed line-clamp-3 text-left">
                                 Toko buku fullstack dengan Laravel & Jetstream, pembayaran via Stripe API, keranjang belanja, manajemen order, serta dashboard analitik penjualan bagi admin.
                             </p>
                         </div>
                     </div>
 
                     <div class="p-6 pt-0 flex items-center gap-3">
-                        <button type="button" data-project="toko-buku" onclick="openProjectModal('toko-buku')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                        <button type="button" data-project="toko-buku" onclick="openProjectModal('toko-buku')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200 font-heading">
                             Lihat Detail
                         </button>
                         <a href="https://github.com/MyYuvii/Online-Store---Book-Store" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
@@ -686,34 +712,36 @@
                     <div>
                         <div class="relative overflow-hidden aspect-[16/10] bg-slate-100">
                             <img src="dist/img/ukk-login.png" alt="Nuvix Travel" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-in-out">
-                            <span class="absolute top-3 left-3 bg-teal-600 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-xs">
+                            <span class="absolute top-3 left-3 bg-teal-600 text-white text-[10px] font-mono font-medium px-2.5 py-1 rounded-full border border-teal-500 shadow-xs">
                                 Team Project
                             </span>
                         </div>
 
                         <div class="p-6">
                             <div class="flex flex-wrap gap-1.5 mb-3">
-                                <span class="text-[11px] font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">Frontend Lead</span>
-                                <span class="text-[11px] font-medium bg-blue-50 text-blue-600 px-2.5 py-0.5 rounded-md border border-blue-200/60">Vue.js</span>
-                                <span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">UI/UX Slicing</span>
+                                <span class="text-[11px] font-mono font-medium bg-teal-50 text-primary px-2.5 py-0.5 rounded-md border border-teal-200/60">Frontend Lead</span>
+                                <span class="text-[11px] font-mono font-medium bg-blue-50 text-blue-600 px-2.5 py-0.5 rounded-md border border-blue-200/60">Vue.js</span>
+                                <span class="text-[11px] font-mono font-medium bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md">Tailwind UI</span>
                             </div>
 
-                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors">
+                            <h3 class="font-bold text-xl text-dark mb-2.5 group-hover:text-primary transition-colors font-heading">
                                 Nuvix Travel
                             </h3>
-                            <p class="font-normal text-sm text-secondary leading-relaxed line-clamp-3 text-justify">
+                            <p class="font-normal text-sm text-slate-500 leading-relaxed line-clamp-3 text-left">
                                 Projek tim untuk mempermudah sistem administrasi dan pelaporan keuangan perjalanan dinas, dengan alur pengajuan, verifikasi, dan pencairan dana real-time.
                             </p>
                         </div>
                     </div>
 
                     <div class="p-6 pt-0 flex items-center gap-3">
-                        <button type="button" data-project="nuvix-travel" onclick="openProjectModal('nuvix-travel')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200">
+                        <button type="button" data-project="nuvix-travel" onclick="openProjectModal('nuvix-travel')" class="open-detail-btn flex-1 text-center text-sm font-semibold text-white bg-primary py-2.5 px-4 rounded-xl shadow-sm hover:bg-primary-dark transition duration-200 font-heading">
                             Lihat Detail
                         </button>
                         <a href="https://github.com/Farhanrafiansyah/nuxix-travel" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-dark hover:border-slate-400 hover:bg-slate-50 transition duration-200">
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                         </a>
+                    </div>
+                </div>
                     </div>
                 </div>
 
@@ -742,13 +770,13 @@
             <!-- Interactive Skill Category Filter Tabs -->
             <div class="flex justify-center items-center gap-3 mb-12 flex-wrap">
                 <button type="button" data-filter="all" onclick="filterSkills('all')" class="skill-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-primary text-white shadow-md shadow-teal-500/25">
-                    Semua Keahlian (11)
+                    Semua Keahlian <span class="font-mono text-xs opacity-80">(11)</span>
                 </button>
                 <button type="button" data-filter="hard" onclick="filterSkills('hard')" class="skill-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
-                    Hard Skills (5)
+                    Hard Skills <span class="font-mono text-xs opacity-80">(5)</span>
                 </button>
                 <button type="button" data-filter="soft" onclick="filterSkills('soft')" class="skill-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-secondary hover:text-dark border border-slate-200 hover:border-primary/50">
-                    Soft Skills (6)
+                    Soft Skills <span class="font-mono text-xs opacity-80">(6)</span>
                 </button>
             </div>
 
@@ -759,7 +787,7 @@
                         💻
                     </div>
                     <div>
-                        <h3 class="font-extrabold text-dark text-2xl tracking-tight">Hard Skills</h3>
+                        <h3 class="font-extrabold text-dark text-2xl tracking-tight font-heading">Hard Skills</h3>
                         <p class="text-xs text-secondary">5 Keahlian Teknis Pemrograman, Bahasa, & Produktivitas</p>
                     </div>
                 </div>
@@ -770,16 +798,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
                                     Hard Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Web Frontend</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Web Frontend</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
                                 <img src="dist/img/programming.png" alt="Front-End Development" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Frontend Development</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Frontend Development</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Pemahaman dalam membangun website responsif dengan HTML, CSS / Tailwind, dan JavaScript. Mampu merancang beragam antarmuka sesuai fungsi dan desain.
                             </p>
                         </div>
@@ -789,16 +817,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
                                     Hard Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Web Backend</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Web Backend</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
                                 <img src="dist/img/server.png" alt="Back-End Development" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Backend Development</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Backend Development</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Pengalaman membangun web application dengan PHP, operasi CRUD, framework Laravel, integrasi database MySQL, arsitektur MVC, dan API pembayaran Stripe.
                             </p>
                         </div>
@@ -808,16 +836,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
                                     Hard Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Dokumentasi</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Dokumentasi</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
                                 <img src="dist/img/word.png" alt="Microsoft Word" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Microsoft Word</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Microsoft Word</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Pengalaman dalam pemformatan dokumen terstruktur, penyusunan laporan teknis, dan administrasi berkas secara rapi dan profesional.
                             </p>
                         </div>
@@ -827,16 +855,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
                                     Hard Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Olah Data</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Olah Data</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
                                 <img src="dist/img/excel.png" alt="Microsoft Excel" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Microsoft Excel</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Microsoft Excel</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Mampu melakukan pengorganisasian data, analisis dasar, serta memanfaatkan formula dan fungsi logika Excel untuk manipulasi data secara efisien.
                             </p>
                         </div>
@@ -846,16 +874,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-teal-50 text-primary border border-teal-200/60">
                                     Hard Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">B1 - B2 Level</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">B1 - B2 Level</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-teal-50/70 border border-teal-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-teal-100/80 transition duration-300">
                                 <img src="dist/img/eng.png" alt="English Language" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">English (Bahasa Inggris)</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">English (Bahasa Inggris)</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Mampu berkomunikasi dalam bahasa Inggris untuk percakapan sehari-hari, membaca dokumentasi teknis pemrograman, diskusi, dan presentasi.
                             </p>
                         </div>
@@ -871,7 +899,7 @@
                         🤝
                     </div>
                     <div>
-                        <h3 class="font-extrabold text-dark text-2xl tracking-tight">Soft Skills</h3>
+                        <h3 class="font-extrabold text-dark text-2xl tracking-tight font-heading">Soft Skills</h3>
                         <p class="text-xs text-secondary">6 Kemampuan Interpersonal, Pola Pikir Kerja, & Kolaborasi</p>
                     </div>
                 </div>
@@ -882,16 +910,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
                                     Soft Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Analytical</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Analytical</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
                                 <img src="dist/img/idea.png" alt="Problem Solving" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Problem Solving</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Problem Solving</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Terampil mengidentifikasi dan membedah pola masalah teknis, serta merancang solusi efektif dengan alur berpikir analitis dan sistematis.
                             </p>
                         </div>
@@ -901,16 +929,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
                                     Soft Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Creative</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Creative</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
                                 <img src="dist/img/creative.png" alt="Creativity" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Creativity</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Creativity</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Memiliki daya kreasi dalam melahirkan ide orisinal dan solusi tampilan yang inovatif, berpikir di luar batas konvensional untuk nilai tambah projek.
                             </p>
                         </div>
@@ -920,16 +948,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
                                     Soft Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Collaboration</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Collaboration</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
                                 <img src="dist/img/conference.png" alt="Team Work" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Team Work</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Team Work</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Fleksibel dan kooperatif baik dalam tugas mandiri maupun tim. Menghargai keragaman sudut pandang demi mencapai sasaran kelompok yang optimal.
                             </p>
                         </div>
@@ -939,16 +967,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
                                     Soft Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Interpersonal</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Interpersonal</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
                                 <img src="dist/img/emotions.png" alt="Empathy" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Empathy</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Empathy</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Memiliki kepekaan diri yang baik, mendengarkan kebutuhan rekan tim atau pengguna, serta mampu merespons secara bijak dalam berbagai situasi.
                             </p>
                         </div>
@@ -958,16 +986,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
                                     Soft Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Komunikasi</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Komunikasi</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
                                 <img src="dist/img/conference1.png" alt="Communication" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Communication</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Communication</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Menyampaikan gagasan, pertanyaan, dan progres projek secara lugas baik lisan maupun tulisan, menciptakan kejelasan pemahaman kerja bersama.
                             </p>
                         </div>
@@ -977,16 +1005,16 @@
                     <div class="skill-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
+                                <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200/60">
                                     Soft Skill
                                 </span>
-                                <span class="text-xs text-slate-400 font-medium">Quality Focus</span>
+                                <span class="text-xs font-mono text-slate-400 font-medium">Quality Focus</span>
                             </div>
                             <div class="w-16 h-16 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-center p-3 mb-4 mx-auto group-hover:scale-110 group-hover:bg-indigo-100/80 transition duration-300">
                                 <img src="dist/img/attention-to-detail.png" alt="Attention to Detail" class="w-full h-full object-contain">
                             </div>
-                            <h4 class="text-lg font-bold text-dark mb-2 text-center">Attention to Detail</h4>
-                            <p class="text-sm text-secondary leading-relaxed text-justify">
+                            <h4 class="text-lg font-bold text-dark mb-2 text-center font-heading">Attention to Detail</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed text-left">
                                 Memeriksa kembali susunan kode, tata letak visual, dan fungsionalitas aplikasi dengan cermat untuk memastikan mutu karya terbaik.
                             </p>
                         </div>
@@ -1327,6 +1355,6 @@
     </div>
 
     <!-- Interactive JavaScript with cache-busting -->
-    <script src="dist/js/script.js?v=2.2"></script>
+    <script src="dist/js/script.js?v=2.3"></script>
 </body>
 </html>

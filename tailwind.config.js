@@ -7,6 +7,11 @@ module.exports = {
       padding: '16px',
     },
     extend: {
+      fontFamily: {
+        heading: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+      },
       colors: {
         primary: '#14b8a6',
         'primary-dark': '#0d9488',
